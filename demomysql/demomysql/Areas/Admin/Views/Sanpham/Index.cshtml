@@ -1,0 +1,116 @@
+﻿@model IEnumerable<demomysql.Models.Sanpham>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tensp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Chitiet)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dongia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Giakm)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Baohanh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Luotxem)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ngaydang)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Soluong)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Banchay)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hinhanh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tinhtrangsp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MadmNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MathuonghieuNavigation)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tensp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Chitiet)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dongia)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Giakm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Baohanh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Luotxem)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ngaydang)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Soluong)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Banchay)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hinhanh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tinhtrangsp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MadmNavigation.Madm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MathuonghieuNavigation.Mathuonghieu)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Masp">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Masp">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Masp">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

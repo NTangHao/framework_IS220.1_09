@@ -1,0 +1,102 @@
+﻿@model IEnumerable<demomysql.Models.Nguoidung>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped border">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PasswordReset)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hoten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaysinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaytao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaysua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vaitro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trangthai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MadanhgiaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquyenNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordReset)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaytao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vaitro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trangthai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MadanhgiaNavigation.Madanhgia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquyenNavigation.Maquyen)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Manguoidung">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Manguoidung">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Manguoidung">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

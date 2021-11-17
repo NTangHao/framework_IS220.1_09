@@ -1,0 +1,221 @@
+﻿@using demomysql.Models;
+@*@model List<demomysql.Models.Sanpham>*@
+@model IEnumerable<demomysql.Models.Sanpham>
+@{
+    ViewData["Title"] = "Danhsachsanpham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null)
+{
+    <h2>không có sản phẩm</h2>
+}
+else
+{
+    <div class="agileinfo-ads-display col-md-15 w3l-rightpro">
+        <div class="wrapper">
+            <!-- first section -->
+            <div class="product-sec1">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xs-4 product-men">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="~/images/k3.jpg" alt="">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="~/Sanpham/Chitietsanpham?id=@item.Masp" class="link-product-add-cart">Quick View</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+
+                            </div>
+                            <div class="item-info-product ">
+                                <h4>
+                                    <a href="~/Sanpham/Chitietsanpham?id=@item.Masp">@item.Tensp</a>
+                                </h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">@string.Format("{0:#,0}", item.Giakm)đ</span>
+                                    <del>@string.Format("{0:#,0}", item.Dongia)đ</del>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_name" value="Lipton Green Tea, 100 Pieces" />
+                                            <input type="hidden" name="amount" value="384.00" />
+                                            <input type="hidden" name="discount_amount" value="1.00" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- //first section -->
+            <!-- 2nd section) -->
+            <div class="product-sec1">
+                @for (int i = 0; i <= 5; i++)
+                {
+                    <div class="col-xs-4 product-men ">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="~/images/k3.jpg" alt="">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="~/Sanpham/Chitietsanpham" class="link-product-add-cart">Quick View</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+
+                            </div>
+                            <div class="item-info-product ">
+                                <h4>
+                                    <a href="~/Sanpham/Chitietsanpham">Lipton Green Tea</a>
+                                </h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">$384.00</span>
+                                    <del>$480.00</del>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_name" value="Lipton Green Tea, 100 Pieces" />
+                                            <input type="hidden" name="amount" value="384.00" />
+                                            <input type="hidden" name="discount_amount" value="1.00" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="clearfix"></div>
+            </div>
+            <!-- //2nd section  -->
+            <!-- 3rd section -->
+            <div class="product-sec1">
+
+                @for (int i = 0; i <= 5; i++)
+                {
+                    <div class="col-xs-4 product-men">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="~/images/k3.jpg" alt="">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="~/Sanpham/Chitietsanpham" class="link-product-add-cart">Quick View</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+
+                            </div>
+                            <div class="item-info-product ">
+                                <h4>
+                                    <a href="~/Sanpham/Chitietsanpham">Lipton Green Tea</a>
+                                </h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">$384.00</span>
+                                    <del>$480.00</del>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_name" value="Lipton Green Tea, 100 Pieces" />
+                                            <input type="hidden" name="amount" value="384.00" />
+                                            <input type="hidden" name="discount_amount" value="1.00" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- //3rd section -->
+            <!-- 4th section -->
+            <div class="product-sec1">
+
+                @for (int i = 0; i <= 5; i++)
+                {
+                    <div class="col-xs-4 product-men">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="~/images/k3.jpg" alt="">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="~/Sanpham/Chitietsanpham" class="link-product-add-cart">Quick View</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+
+                            </div>
+                            <div class="item-info-product ">
+                                <h4>
+                                    <a href="~/Sanpham/Chitietsanpham">Lipton Green Tea</a>
+                                </h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">$384.00</span>
+                                    <del>$480.00</del>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_name" value="Lipton Green Tea, 100 Pieces" />
+                                            <input type="hidden" name="amount" value="384.00" />
+                                            <input type="hidden" name="discount_amount" value="1.00" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- //4th section  -->
+
+        </div>
+    </div>
+}
+

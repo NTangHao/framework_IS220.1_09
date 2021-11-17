@@ -1,0 +1,62 @@
+﻿@model IEnumerable<demomysql.Models.Nhacungcap>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Index</h1>
+
+<p> 
+    <a class="btn btn-primary" asp-action="Create"><i class="fas fa-plus"></i> &nbsp; Tạo mới</a>
+</p>
+<table class="table table-striped border">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenncc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diachi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thanhpho)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tinhtrangxacnhan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenncc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thanhpho)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tinhtrangxacnhan)
+            </td>
+            <td>
+
+                <a asp-action="Edit" asp-route-id="@item.Mancc" class="btn btn-success  rounded-0" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a>
+                <a asp-action="Details" asp-route-id="@item.Mancc" class="btn btn-primary  rounded-0" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-table"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Mancc" class="btn btn-danger  rounded-0" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-trash"></i></a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
