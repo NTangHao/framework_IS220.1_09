@@ -1,179 +1,422 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using demomysql.Models
+@using demomysql.Extension
 @{
 
     ViewBag.title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
+    List<Sanpham> giamgia = ViewBag.spgiamgia;
+    List<Sanpham> manhinh = ViewBag.spmanhinh;
 }
-@Html.Partial("Sidebar")
-<div class="agileinfo-ads-display col-md-9">
-    <div class="wrapper">
-        <!-- first section (nuts) -->
-        <div class="product-sec1">
-            <h3 class="heading-tittle">Nuts</h3>
-            @for (int i = 1; i <= 3; i++)
-            {
-                <div class="col-md-4 product-men">
-                    <div class="men-pro-item simpleCart_shelfItem">
-                        <div class="men-thumb-item">
-                            <img src="images/m3.jpg" alt="">
-                            <div class="men-cart-pro">
-                                <div class="inner-men-cart-pro">
-                                    <a href="~/Sanpham/Chitietsanpham?id=@i" class="link-product-add-cart">Quick View</a>
+
+
+<!-- Begin Slider Area -->
+<div class="slider-area">
+
+    <!-- Main Slider -->
+    <div class="swiper-container main-slider swiper-arrow with-bg_white">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide animation-style-01">
+                <div class="slide-inner bg-height" data-bg-image="~/assets/images/slider/bg/1-1.jpg">
+                    <div class="parallax-img-wrap">
+                        <div class="chilly">
+                            <div class="scene fill">
+                                <div class="expand-width" data-depth="0.2">
+                                    <img src="~/assets/images/slider/inner-img/1-1-231x210.png" alt="Inner Image">
                                 </div>
                             </div>
-                            <span class="product-new-top">New</span>
-
                         </div>
-                        <div class="item-info-product ">
-                            <h4>
-                                <a href="~/Sanpham/Chitietsanpham">Pista..., 250g</a>
-                            </h4>
-                            <div class="info-product-price">
-                                <span class="item_price">$520.99</span>
-                                <del>$600.99</del>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart" />
-                                        <input type="hidden" name="add" value="1" />
-                                        <input type="hidden" name="business" value=" " />
-                                        <input type="hidden" name="item_name" value="Pista, 250g" />
-                                        <input type="hidden" name="amount" value="520.99" />
-                                        <input type="hidden" name="discount_amount" value="1.00" />
-                                        <input type="hidden" name="currency_code" value="USD" />
-                                        <input type="hidden" name="return" value=" " />
-                                        <input type="hidden" name="cancel_return" value=" " />
-                                        <input type="submit" name="submit" value="Add to cart" class="button" />
-                                    </fieldset>
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            }
-
-            <div class="clearfix"></div>
-        </div>
-        <!-- //first section (nuts) -->
-
-        <!-- second section (nuts special) -->
-        <div class="product-sec1 product-sec2">
-            <div class="col-xs-7 effect-bg">
-                <h3 class="">Pure Energy</h3>
-                <h6>Enjoy our all healthy Products</h6>
-                <p>Get Extra 10% Off</p>
-            </div>
-            <h3 class="w3l-nut-middle">Nuts & Dry Fruits</h3>
-            <div class="col-xs-5 bg-right-nut">
-                <img src="images/nut1.png" alt="">
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <!-- //second section (nuts special) -->
-        <!-- third section (oils) -->
-        <div class="product-sec1">
-            <h3 class="heading-tittle">Oils</h3>
-            @for (int i = 1; i <= 4; i++)
-            {
-                <div class="col-md-4 product-men">
-                    <div class="men-pro-item simpleCart_shelfItem">
-                        <div class="men-thumb-item">
-                            <img src="images/mk6.jpg" alt="">
-                            <div class="men-cart-pro">
-                                <div class="inner-men-cart-pro">
-                                    <a href="~/Sanpham/Chitietsanpham?id=@i" class="link-product-add-cart">Quick View</a>
+                        <div class="avocado">
+                            <div class="scene fill">
+                                <div class="expand-width" data-depth="0.5">
+                                    <img src="~/assets/images/slider/inner-img/1-2-224x204.png" alt="Inner Image">
                                 </div>
                             </div>
-                            <span class="product-new-top">New</span>
-
                         </div>
-                        <div class="item-info-product ">
-                            <h4>
-                                <a href="~/Sanpham/Chitietsanpham?id=@i">Fortune Oil, 5L</a>
-                            </h4>
-                            <div class="info-product-price">
-                                <span class="item_price">$399.99</span>
-                                <del>$500.00</del>
+                    </div>
+                    <div class="container">
+                        <div class="parallax-with-content">
+                            <div class="slide-content">
+                                <span class="sub-title mb-3">Linh kiện máy tính & điện tử</span>
+                                <h2 class="title mb-9">Giá tốt nhất. Giảm đến 40% <br> Ưu dãi Freeship.</h2>
+                                <div class="button-wrap">
+                                    <a class="btn btn-custom-size lg-size btn-primary btn-white-hover rounded-0" asp-controller="Product" asp-action="Index">Mua ngay</a>
+                                </div>
                             </div>
-                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart" />
-                                        <input type="hidden" name="add" value="1" />
-                                        <input type="hidden" name="business" value=" " />
-                                        <input type="hidden" name="item_name" value="Fortune Oil, 5L" />
-                                        <input type="hidden" name="amount" value="399.99" />
-                                        <input type="hidden" name="discount_amount" value="1.00" />
-                                        <input type="hidden" name="currency_code" value="USD" />
-                                        <input type="hidden" name="return" value=" " />
-                                        <input type="hidden" name="cancel_return" value=" " />
-                                        <input type="submit" name="submit" value="Add to cart" class="button" />
-                                    </fieldset>
-                                </form>
+                            <div class="parallax-img-wrap">
+                                <div class="tomatoes">
+                                    <div class="scene fill">
+                                        <div class="expand-width" data-depth="0.5">
+                                            <img src="~/assets/images/slider/inner-img/1-3-601x534.png" alt="Inner Image">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-            }
-            <div class="clearfix"></div>
-        </div>
-        <!-- //third section (oils) -->
-
-        <!-- fourth section (noodles) -->
-        <div class="product-sec1">
-            <h3 class="heading-tittle">Pasta & Noodles</h3>
-            @for (int i = 1; i <= 4; i++)
-            {
-                <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-                <div class="men-thumb-item">
-                    <img src="images/mk9.jpg" alt="">
-                    <div class="men-cart-pro">
-                        <div class="inner-men-cart-pro">
-                            <a href="~/Sanpham/Chitietsanpham?id=@i" class="link-product-add-cart">Quick View</a>
+            </div>
+            <div class="swiper-slide animation-style-01">
+                <div class="slide-inner bg-height" data-bg-image="~/assets/images/slider/bg/1-1.jpg">
+                    <div class="parallax-img-wrap">
+                        <div class="chilly">
+                            <div class="scene fill">
+                                <div class="expand-width" data-depth="0.2">
+                                    <img src="~/assets/images/slider/inner-img/1-1-231x210.png" alt="Inner Image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="avocado">
+                            <div class="scene fill">
+                                <div class="expand-width" data-depth="0.5">
+                                    <img src="~/assets/images/slider/inner-img/1-2-224x204.png" alt="Inner Image">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <span class="product-new-top">New</span>
-
-                </div>
-                <div class="item-info-product ">
-                    <h4>
-                        <a href="~/Sanpham/Chitietsanpham?id=@i">Chinese Noodles, 68g</a>
-                    </h4>
-                    <div class="info-product-price">
-                        <span class="item_price">$11.99</span>
-                        <del>$15.00</del>
+                    <div class="container">
+                        <div class="parallax-with-content">
+                            <div class="slide-content">
+                                <span class="sub-title mb-3">Linh kiện máy tính & điện tử</span>
+                                <h2 class="title mb-9">Đổi trả khi có lỗi <br> Bảo hành tận nhà.</h2>
+                                <div class="button-wrap">
+                                    <a class="btn btn-custom-size lg-size btn-primary btn-white-hover rounded-0" asp-controller="Product" asp-action="Index">Mua ngay</a>
+                                </div>
+                            </div>
+                            <div class="parallax-img-wrap">
+                                <div class="tomatoes">
+                                    <div class="scene fill">
+                                        <div class="expand-width" data-depth="0.5">
+                                            <img src="~/assets/images/slider/inner-img/2-1-601x426.png" alt="Inner Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                        <form action="#" method="post">
-                            <fieldset>
-                                <input type="hidden" name="cmd" value="_cart" />
-                                <input type="hidden" name="add" value="1" />
-                                <input type="hidden" name="business" value=" " />
-                                <input type="hidden" name="item_name" value="Chinese Noodles, 68g" />
-                                <input type="hidden" name="amount" value="11.99" />
-                                <input type="hidden" name="discount_amount" value="1.00" />
-                                <input type="hidden" name="currency_code" value="USD" />
-                                <input type="hidden" name="return" value=" " />
-                                <input type="hidden" name="cancel_return" value=" " />
-                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                            </fieldset>
-                        </form>
-                    </div>
-
                 </div>
             </div>
         </div>
-            }
-            
-            <div class="clearfix"></div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination with-bg d-md-none"></div>
+
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+</div>
+<!-- Slider Area End Here -->
+<!-- Begin Shipping Area -->
+<div class="shipping-area section-space-top-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="~/assets/images/shipping/icon/plane.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Miễn Phí Vận Chuyển</h5>
+                        <p class="short-desc mb-0">Miễn phí vận chuyển toàn quốc</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="~/assets/images/shipping/icon/earphones.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Hỗ Trợ Online </h5>
+                        <p class="short-desc mb-0">24/7 Tư vấn hỗ trợ online</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="~/assets/images/shipping/icon/shield.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Bảo Mật An Toàn</h5>
+                        <p class="short-desc mb-0">Bảo mật dịch vụ thanh toán online</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- //fourth section (noodles) -->
     </div>
 </div>
+<!-- Shipping Area End Here -->
+<!-- Begin Product Area PART1 PRODUCT -->
+<div class="product-area section-space-y-axis-100">
+    <div class="container">
+        <div class="section-title text-center pb-55">
+            <span class="sub-title text-primary">XEM THÊM MỚI NHẤT</span>
+            <h2 class="title mb-0">CPU GIẢM GIÁ > 20% - MIỄN PHÍ VẬN CHUYỂN</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="swiper-container product-slider swiper-arrow with-radius border-issue">
+                    <div class="swiper-wrapper">
+
+                        @foreach (var item in giamgia)
+                        {
+                            <div class="swiper-slide">
+                                <div class="product-item">
+                                    <div class="product-img img-zoom-effect">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Masp">
+                                            <img class="img-full" src="~/images/sanphams/@item.Hinhanh" alt="Product Images" height="270" >
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" data-id="@item.Masp" class="button ajax-add-to-cart">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="wishlist.html">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a class="product-name" asp-controller="Product" asp-action="Details" asp-route-id="@item.Masp">@item.Tensp</a>
+                                        <div class="price-box pb-1">
+                                            <span class="new-price text-danger">@Extension.ToVnd((double)item.Dongia - (double)item.Dongia * (double)item.Giakm)</span>
+                                            <span class="old-price text-primary">@Extension.ToVnd((double)(item.Dongia))</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-nav-wrap">
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Area End Here -->
+<!-- Begin Product Area PART2 PRODUCT -->
+<div class="product-area section-space-top-100">
+    <div class="container">
+        <div class="section-title text-center pb-55">
+            <span class="sub-title text-primary">SẢN PHẨM HOT</span>
+            <h2 class="title mb-0">MÀN HÌNH KHUYẾN MÃI HOT - GIAO HÀNG MIỄN PHÍ</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="swiper-container product-list-slider border-issue">
+                    <div class="swiper-wrapper">
+                     @foreach (var item in manhinh)
+	{
+                        <div class="swiper-slide">
+                            <div class="product-list-item">
+                                <div class="product-img img-zoom-effect">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Masp">
+                                        <img class="img-full" src="~/images/sanphams/@item.Hinhanh" alt="Product Images">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <a class="product-name"  asp-controller="Product" asp-action="Details" asp-route-id="@item.Masp">@item.Tensp</a>
+                                    <div class="price-box pb-1">
+                                        <span class="new-price text-danger">@Extension.ToVnd((double)item.Dongia - (double)item.Dongia * (double)item.Giakm)</span>
+                                        <span class="old-price text-primary">@Extension.ToVnd((double)(item.Dongia))</span>
+                                    </div>
+                                    <div class="rating-box-wrap">
+                                        
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" data-id="@item.Masp" class="button ajax-add-to-cart">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+	}
+                        
+                        
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Area End Here -->
+<!-- Begin Blog Area  phần tin tức-->
+
+<div class="blog-area section-space-y-axis-100">
+    <div class="container">
+        <div class="section-title text-center pb-55">
+            <span class="sub-title text-primary">Xem thêm </span>
+            <h2 class="title mb-0">Sản phẩm giảm giá nhiều</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="swiper-container blog-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="blog-item">
+                                <div class="blog-img img-zoom-effect">
+                                    <a href="blog-detail-left-sidebar.html">
+                                        <img class="img-full" src="~/assets/images/blog/medium-size/1-1-370x315.jpg" alt="Blog Image">
+                                    </a>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta text-dim-gray pb-3">
+                                        <ul>
+                                            <li class="date"><i class="fa fa-calendar-o me-2"></i>May 21, 2021</li>
+                                            <li>
+                                                <span class="comments me-3">
+                                                    <a href="javascript:void(0)">2 Comments</a>
+                                                </span>
+                                                <span class="link-share">
+                                                    <a href="javascript:void(0)">Share</a>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h5 class="title mb-4">
+                                        <a href="blog-detail-left-sidebar.html">Lorem ipsum dolor consec adipisicing elit</a>
+                                    </h5>
+                                    <p class="short-desc mb-5">Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididunt ut labore gthydolore magna aliqua.</p>
+                                    <div class="button-wrap">
+                                        <a class="btn btn-custom-size btn-dark btn-lg rounded-0" href="blog-detail-left-sidebar.html">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="blog-item">
+                                <div class="blog-img img-zoom-effect">
+                                    <a href="blog-detail-left-sidebar.html">
+                                        <img class="img-full" src="~/assets/images/blog/medium-size/1-2-370x315.jpg" alt="Blog Image">
+                                    </a>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta text-dim-gray pb-3">
+                                        <ul>
+                                            <li class="date"><i class="fa fa-calendar-o me-2"></i>May 21, 2021</li>
+                                            <li>
+                                                <span class="comments me-3">
+                                                    <a href="javascript:void(0)">2 Comments</a>
+                                                </span>
+                                                <span class="link-share">
+                                                    <a href="javascript:void(0)">Share</a>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h5 class="title mb-4">
+                                        <a href="blog-detail-left-sidebar.html">Voluptate minus temporibus nostrum adipi</a>
+                                    </h5>
+                                    <p class="short-desc mb-5">Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididunt ut labore gthydolore magna aliqua.</p>
+                                    <div class="button-wrap">
+                                        <a class="btn btn-custom-size btn-dark btn-lg rounded-0" href="blog-detail-left-sidebar.html">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="blog-item">
+                                <div class="blog-img img-zoom-effect">
+                                    <a href="blog-detail-left-sidebar.html">
+                                        <img class="img-full" src="~/assets/images/blog/medium-size/1-3-370x315.jpg" alt="Blog Image">
+                                    </a>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta text-dim-gray pb-3">
+                                        <ul>
+                                            <li class="date"><i class="fa fa-calendar-o me-2"></i>May 21, 2021</li>
+                                            <li>
+                                                <span class="comments me-3">
+                                                    <a href="javascript:void(0)">2 Comments</a>
+                                                </span>
+                                                <span class="link-share">
+                                                    <a href="javascript:void(0)">Share</a>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h5 class="title mb-4">
+                                        <a href="blog-detail-left-sidebar.html">Corporis tempora molestiae nulla esse ipsam</a>
+                                    </h5>
+                                    <p class="short-desc mb-5">Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididunt ut labore gthydolore magna aliqua.</p>
+                                    <div class="button-wrap">
+                                        <a class="btn btn-custom-size btn-dark btn-lg rounded-0" href="blog-detail-left-sidebar.html">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Area End Here -->
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+
+        $(document).ready(function () {
+            $(".ajax-add-to-cart").click(function () {
+
+                $.ajax({
+                    url: "/Shoppingcart/AddToCart",
+                    data: {
+                        id: $(this).data("id"),
+                        soluong: 1,
+                        type: "ajax"
+                    },
+                    success: function (data) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Thêm giỏ hàng thành công',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        $("#cart-count").html(data.soluong);
+                        console.log(data);
+
+                    }
+                });
+            });
+
+
+        });
+
+
+        $('.ajax-add-to-cart').click(function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+}

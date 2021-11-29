@@ -1,0 +1,48 @@
+﻿@model demomysql.Models.Nguoidung
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Đăng ký tài khoản</h1>
+
+<div class="col-lg-6 pt-7 mx-auto pb-10">
+    <form asp-action="Register" asp-controller="Account" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="login-form">
+            <h4 class="login-title">Đăng ký</h4>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <label>Họ tên</label>
+                    <input asp-for="Hoten" type="text" placeholder="Họ tên">
+                    <span asp-validation-for="Hoten" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 col-12">
+                    <label>Số điện thoại</label>
+                    <input asp-for="Dienthoai" type="text" placeholder="Số điện thoại">
+                </div>
+                <div class="col-md-12">
+                    <label>Email*</label>
+                    <input asp-for="Email" type="email" placeholder="Email">
+                </div>
+                <div class="col-md-6">
+                    <label>Username</label>
+                    <input asp-for="Username" type="text" placeholder="UserName">
+                </div>
+                <div class="col-md-6">
+                    <label>Password</label>
+                    <input asp-for="Password" type="password" placeholder="Password">
+                </div>
+                <div class="col-md-6">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm Password">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -12,15 +12,32 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 2 "F:\HTTT tren framework\demomysql\demomysql\Views\_ViewImports.cshtml"
+using demomysql;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "F:\HTTT tren framework\demomysql\demomysql\Views\_ViewImports.cshtml"
+using demomysql.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9847fd9b43d16baa35abad7ca1a5f7ca785dd842", @"/Views/Shared/Sidebar.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f81c5a8f26a2633761712ca0e5b925eaff2a7779", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Sidebar : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d2.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString(""), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d1.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_3 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d4.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_4 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d5.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
-        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_5 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d3.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("action", new global::Microsoft.AspNetCore.Html.HtmlString("#"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("method", "post", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_2 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d2.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_3 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString(""), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_4 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d1.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_5 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d4.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_6 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d5.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_7 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/images/d3.jpg"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         #line hidden
         #pragma warning disable 0649
         private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext __tagHelperExecutionContext;
@@ -41,17 +58,36 @@ namespace AspNetCore
                 return __backed__tagHelperScopeManager;
             }
         }
+        private global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper;
+        private global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper;
         private global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper;
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\r\n");
-            WriteLiteral("\r\n<div class=\"side-bar col-md-3\">\r\n    <div class=\"search-hotel\">\r\n        <h3 class=\"agileits-sear-head\">Search Here..</h3>\r\n        <form action=\"#\" method=\"post\">\r\n            <input type=\"search\" placeholder=\"Product name...\" name=\"search\"");
-            BeginWriteAttribute("required", " required=\"", 367, "\"", 378, 0);
-            EndWriteAttribute();
-            WriteLiteral(@">
-            <input type=""submit"" value="" "">
-        </form>
+            WriteLiteral("\r\n<div class=\"side-bar col-md-3\">\r\n    <div class=\"search-hotel\">\r\n        <h3 class=\"agileits-sear-head\">Search Here..</h3>\r\n        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9847fd9b43d16baa35abad7ca1a5f7ca785dd8426273", async() => {
+                WriteLiteral("\r\n            <input type=\"search\" placeholder=\"Product name...\" name=\"search\"");
+                BeginWriteAttribute("required", " required=\"", 367, "\"", 378, 0);
+                EndWriteAttribute();
+                WriteLiteral(">\r\n            <input type=\"submit\" value=\" \">\r\n        ");
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper);
+            __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+            __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper.Method = (string)__tagHelperAttribute_1.Value;
+            __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_1);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
     </div>
     <!-- price range -->
     <div class=""range"">
@@ -82,10 +118,10 @@ namespace AspNetCore
     <!-- //food preference -->
     <!-- discounts -->
     <div class=""left-side"">
-        ");
-            WriteLiteral(@"<h3 class=""agileits-sear-head"">Discount</h3>
+        <h3 class=""agileits-sear-head"">Discount</h3>
         <ul>
-            <li>
+   ");
+            WriteLiteral(@"         <li>
                 <input type=""checkbox"" class=""checked"">
                 <span class=""span"">5% or More</span>
             </li>
@@ -112,10 +148,10 @@ namespace AspNetCore
         </ul>
     </div>
     <!-- //discounts -->
-    <!-- reviews -");
-            WriteLiteral(@"->
+    <!-- reviews -->
     <div class=""customer-rev left-side"">
-        <h3 class=""agileits-sear-head"">Customer Review</h3>
+        <h3 class");
+            WriteLiteral(@"=""agileits-sear-head"">Customer Review</h3>
         <ul>
             <li>
                 <a href=""#"">
@@ -135,11 +171,11 @@ namespace AspNetCore
                     <i class=""fa fa-star"" aria-hidden=""true""></i>
                     <i class=""fa fa-star-o"" aria-hidden=""true""></i>
                     <span>4.0</span>
-                </");
-            WriteLiteral(@"a>
+                </a>
             </li>
             <li>
-                <a href=""#"">
+                <a hre");
+            WriteLiteral(@"f=""#"">
                     <i class=""fa fa-star"" aria-hidden=""true""></i>
                     <i class=""fa fa-star"" aria-hidden=""true""></i>
                     <i class=""fa fa-star"" aria-hidden=""true""></i>
@@ -160,9 +196,9 @@ namespace AspNetCore
             </li>
             <li>
                 <a href=""#"">
-                ");
-            WriteLiteral(@"    <i class=""fa fa-star"" aria-hidden=""true""></i>
                     <i class=""fa fa-star"" aria-hidden=""true""></i>
+            ");
+            WriteLiteral(@"        <i class=""fa fa-star"" aria-hidden=""true""></i>
                     <i class=""fa fa-star-half-o"" aria-hidden=""true""></i>
                     <i class=""fa fa-star-o"" aria-hidden=""true""></i>
                     <i class=""fa fa-star-o"" aria-hidden=""true""></i>
@@ -188,9 +224,9 @@ namespace AspNetCore
                 <input type=""checkbox"" class=""checked"">
                 <span class=""span"">Greek</span>
             </li>
-       ");
-            WriteLiteral(@"     <li>
-                <input type=""checkbox"" class=""checked"">
+            <li>
+                <input type=""checkbox"" class=""checke");
+            WriteLiteral(@"d"">
                 <span class=""span"">Chinese</span>
             </li>
             <li>
@@ -218,15 +254,18 @@ namespace AspNetCore
                 <span class=""span""> Spanish </span>
             </li>
         </ul>
-  ");
-            WriteLiteral("  </div>\r\n    <!-- //cuisine -->\r\n    <!-- deals -->\r\n    <div class=\"deal-leftmk left-side\">\r\n        <h3 class=\"agileits-sear-head\">Special Deals</h3>\r\n        <div class=\"special-sec1\">\r\n            <div class=\"col-xs-4 img-deals\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84211978", async() => {
+    </div>
+    <!-- //cuisine -->
+    <!-- deals -->
+    <div ");
+            WriteLiteral("class=\"deal-leftmk left-side\">\r\n        <h3 class=\"agileits-sear-head\">Special Deals</h3>\r\n        <div class=\"special-sec1\">\r\n            <div class=\"col-xs-4 img-deals\">\r\n                ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84214876", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
             __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {
@@ -245,13 +284,13 @@ namespace AspNetCore
         <div class=""special-sec1"">
             <div class=""col-xs-4 img-deals"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84213439", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84216337", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
             __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_2);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_4);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {
@@ -270,13 +309,13 @@ namespace AspNetCore
         <div class=""special-sec1"">
             <div class=""col-xs-4 img-deals"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84214897", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84217795", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
             __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_5);
             __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {
@@ -295,13 +334,13 @@ namespace AspNetCore
         <div class=""special-sec1"">
             <div class=""col-xs-4 img-deals"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84216349", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84219247", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
             __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_4);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_6);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {
@@ -320,13 +359,13 @@ namespace AspNetCore
         <div class=""special-sec1"">
             <div class=""col-xs-4 img-deals"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84217810", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9847fd9b43d16baa35abad7ca1a5f7ca785dd84220708", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
             __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_5);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_1);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
             await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
             if (!__tagHelperExecutionContext.Output.IsContentModified)
             {

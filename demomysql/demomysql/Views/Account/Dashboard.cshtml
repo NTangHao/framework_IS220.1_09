@@ -1,0 +1,104 @@
+﻿@*@model IEnumerable<demomysql.Models.Nguoidung>*@
+@using demomysql.Models;
+@model demomysql.Models.Nguoidung
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Donhang> donhang = ViewBag.dsdonhang;
+}
+
+<h1>@Model.Hoten</h1>
+
+
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h1 class="breadcrumb-heading">Thông tin tài khoản</h1>
+                        <ul>
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Home <i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>Thông tin tài khoản </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="account-page-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <ul class="nav myaccount-tab-trigger" id="account-page-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="account-dashboard-tab" data-bs-toggle="tab" href="#account-dashboard" role="tab" aria-controls="account-dashboard" aria-selected="true">Thông tin tài khoản</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" href="#account-orders" role="tab" aria-controls="account-orders" aria-selected="false">Danh sách đơn hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="account-address-tab" data-bs-toggle="tab" href="#account-address" role="tab" aria-controls="account-address" aria-selected="false">Địa chỉ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="account-details-tab" data-bs-toggle="tab" href="#account-details" role="tab" aria-controls="account-details" aria-selected="false">Thông tin cài đặt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="account-logout-tab" asp-controller="Account" asp-action="Logout" role="tab" aria-selected="false">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-9">
+                <div class="col-lg-9">
+                    <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
+                        <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel" aria-labelledby="account-dashboard-tab">
+                            <div class="myaccount-dashboard">
+                                <p>
+
+                                    Xin chào <b> </b> 
+                                </p>
+                                <p>
+                                    From your account dashboard you can view your recent orders, manage your shipping and
+                                    billing addresses and <a href="javascript:void(0)">edit your password and account details</a>.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
+                            <div class="myaccount-orders">
+                                <h4 class="small-title">Danh sách đơn hàng</h4>
+                                @await Html.PartialAsync("DonHangPartial", donhang)
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-address" role="tabpanel" aria-labelledby="account-address-tab">
+                            <div class="myaccount-address">
+                                <p>The following addresses will be used on the checkout page by default.</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 class="small-title">BILLING ADDRESS</h4>
+                                        <address>
+                                            1234 Heaven Stress, Beverly Hill OldYork UnitedState of Lorem
+                                        </address>
+                                    </div>
+                                    <div class="col">
+                                        <h4 class="small-title">SHIPPING ADDRESS</h4>
+                                        <address>
+                                            1234 Heaven Stress, Beverly Hill OldYork UnitedState of Lorem
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-details" role="tabpanel" aria-labelledby="account-details-tab">
+                            <div class="myaccount-details">
+                                @await Html.PartialAsync("UpdateAccount",Model)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

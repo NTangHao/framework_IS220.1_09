@@ -1,0 +1,54 @@
+﻿@model IEnumerable<demomysql.Models.Tintuc>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered table-hover myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tieude)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaydang)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.Hinhanh)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tieude)
+            </td>
+     
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaydang)
+            </td>
+       
+            <td>
+                <img width="222" height="131" src="~/images/tintucs/@item.Hinhanh" />
+            </td>
+         
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Matintuc">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Matintuc">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Matintuc">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

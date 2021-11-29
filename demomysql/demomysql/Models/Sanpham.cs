@@ -9,8 +9,8 @@ namespace demomysql.Models
     {
         public Sanpham()
         {
+            Anhthems = new HashSet<Anhthem>();
             Ctdhs = new HashSet<Ctdh>();
-            Hinhanhs = new HashSet<Hinhanh>();
         }
 
         public int Masp { get; set; }
@@ -30,7 +30,7 @@ namespace demomysql.Models
 
         public virtual Danhmuc MadmNavigation { get; set; }
         public virtual Thuonghieu MathuonghieuNavigation { get; set; }
+        public virtual ICollection<Anhthem> Anhthems { get; set; }
         public virtual ICollection<Ctdh> Ctdhs { get; set; }
-        public virtual ICollection<Hinhanh> Hinhanhs { get; set; }
     }
 }

@@ -1,0 +1,49 @@
+﻿
+
+@{ 
+    Nguoidung capnhat = ViewBag.capnhat;
+}
+
+@model demomysql.Models.Nguoidung
+<form asp-controller="Account" asp-action="UpdateAccount" method="post" class="myaccount-form">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="myaccount-form-inner">
+        <div class="single-input single-input-half">
+            <label>Họ tên*</label>
+            <input asp-for="Hoten" type="text" >
+        </div>
+        <div class="single-input single-input-half">
+            <label>Số điện thoại*</label>
+            <input asp-for="Dienthoai" type="text">
+        </div>
+        <div class="single-input">
+            <label>Email*</label>
+            <input asp-for="Email" type="email" >
+        </div>
+        <div class="single-input">
+            <label>Username</label>
+            <input asp-for="Username" type="text" >
+        </div>
+        <div class="single-input">
+            <label>
+                Mật khẩu hiện tại
+            </label>
+            <label>@Model.Password</label>
+        </div>
+        <div class="single-input">
+            <label>
+                Mật khẩu mới
+            </label>
+            <input type="password" asp-for="Password" >
+        </div>
+        <div class="single-input">
+            <label>Xác nhận lại mật khẩu</label>
+            <input type="password">
+        </div>
+        <div class="single-input">
+            <button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0" type="submit">
+                <span>Lưu thay đổi</span>
+            </button>
+        </div>
+    </div>
+</form>

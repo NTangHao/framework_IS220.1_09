@@ -1485,7 +1485,7 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #858796;
+  color: black;
 }
 
 .table th,
@@ -1495,10 +1495,11 @@ pre code {
   border-top: 1px solid #e3e6f0;
 }
 
-.table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #e3e6f0;
-}
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #e3e6f0;
+        background-color: lightskyblue;
+    }
 
 .table tbody + tbody {
   border-top: 2px solid #e3e6f0;

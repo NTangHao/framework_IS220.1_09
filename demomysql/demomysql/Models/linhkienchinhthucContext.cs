@@ -17,6 +17,7 @@ namespace demomysql.Models
         {
         }
 
+        public virtual DbSet<Anhthem> Anhthems { get; set; }
         public virtual DbSet<Binhluan> Binhluans { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Ctdh> Ctdhs { get; set; }
@@ -24,12 +25,12 @@ namespace demomysql.Models
         public virtual DbSet<Danhmuc> Danhmucs { get; set; }
         public virtual DbSet<Donhang> Donhangs { get; set; }
         public virtual DbSet<Giaohang> Giaohangs { get; set; }
-        public virtual DbSet<Hinhanh> Hinhanhs { get; set; }
         public virtual DbSet<Nguoidung> Nguoidungs { get; set; }
         public virtual DbSet<Nhacungcap> Nhacungcaps { get; set; }
         public virtual DbSet<Sanpham> Sanphams { get; set; }
         public virtual DbSet<Thuonghieu> Thuonghieus { get; set; }
         public virtual DbSet<Tintuc> Tintucs { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<Vaitronguoidung> Vaitronguoidungs { get; set; }
         public virtual DbSet<Voucher> Vouchers { get; set; }
 
@@ -44,6 +45,34 @@ namespace demomysql.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Anhthem>(entity =>
+            {
+                entity.HasKey(e => e.Maanh)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("anhthem");
+
+                entity.HasIndex(e => e.Masp, "FK_GOM");
+
+                entity.Property(e => e.Maanh).HasColumnName("MAANH");
+
+                entity.Property(e => e.Linkanh)
+                    .HasMaxLength(1000)
+                    .HasColumnName("LINKANH");
+
+                entity.Property(e => e.Masp).HasColumnName("MASP");
+
+                entity.Property(e => e.Ngaytao)
+                    .HasColumnType("date")
+                    .HasColumnName("NGAYTAO");
+
+                entity.HasOne(d => d.MaspNavigation)
+                    .WithMany(p => p.Anhthems)
+                    .HasForeignKey(d => d.Masp)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_GOM");
+            });
+
             modelBuilder.Entity<Binhluan>(entity =>
             {
                 entity.HasKey(e => e.Mabinhluan)
@@ -190,7 +219,13 @@ namespace demomysql.Models
 
                 entity.HasIndex(e => e.Magiaohang, "FK_GIAO");
 
+                entity.HasIndex(e => e.Idtransaction, "FK_TRANSACTION_idx");
+
                 entity.Property(e => e.Madonhang).HasColumnName("MADONHANG");
+
+                entity.Property(e => e.Bestseller)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("BESTSELLER");
 
                 entity.Property(e => e.Diachi)
                     .HasMaxLength(250)
@@ -208,9 +243,15 @@ namespace demomysql.Models
                     .HasMaxLength(250)
                     .HasColumnName("GIOITINH");
 
+                entity.Property(e => e.Homeflag)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("HOMEFLAG");
+
                 entity.Property(e => e.Hoten)
                     .HasMaxLength(250)
                     .HasColumnName("HOTEN");
+
+                entity.Property(e => e.Idtransaction).HasColumnName("IDTRANSACTION");
 
                 entity.Property(e => e.Magiaohang).HasColumnName("MAGIAOHANG");
 
@@ -240,13 +281,15 @@ namespace demomysql.Models
 
                 entity.Property(e => e.Tongdon).HasColumnName("TONGDON");
 
-                entity.Property(e => e.Transactionid)
-                    .HasMaxLength(300)
-                    .HasColumnName("TRANSACTIONID");
-
                 entity.Property(e => e.Vanchuyen)
                     .HasMaxLength(50)
                     .HasColumnName("VANCHUYEN");
+
+                entity.HasOne(d => d.IdtransactionNavigation)
+                    .WithMany(p => p.Donhangs)
+                    .HasForeignKey(d => d.Idtransaction)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_TRANSACTION");
 
                 entity.HasOne(d => d.MagiaohangNavigation)
                     .WithMany(p => p.Donhangs)
@@ -288,30 +331,6 @@ namespace demomysql.Models
                     .HasColumnName("XACNHAN");
             });
 
-            modelBuilder.Entity<Hinhanh>(entity =>
-            {
-                entity.HasKey(e => e.Maanh)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("hinhanh");
-
-                entity.HasIndex(e => e.Masp, "FK_GOM");
-
-                entity.Property(e => e.Maanh).HasColumnName("MAANH");
-
-                entity.Property(e => e.Linkanh)
-                    .HasMaxLength(250)
-                    .HasColumnName("LINKANH");
-
-                entity.Property(e => e.Masp).HasColumnName("MASP");
-
-                entity.HasOne(d => d.MaspNavigation)
-                    .WithMany(p => p.Hinhanhs)
-                    .HasForeignKey(d => d.Masp)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_GOM");
-            });
-
             modelBuilder.Entity<Nguoidung>(entity =>
             {
                 entity.HasKey(e => e.Manguoidung)
@@ -324,6 +343,10 @@ namespace demomysql.Models
                 entity.HasIndex(e => e.Maquyen, "FK_PHANQUYEN");
 
                 entity.Property(e => e.Manguoidung).HasColumnName("MANGUOIDUNG");
+
+                entity.Property(e => e.Dienthoai)
+                    .HasMaxLength(100)
+                    .HasColumnName("DIENTHOAI");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(250)
@@ -421,7 +444,7 @@ namespace demomysql.Models
                 entity.Property(e => e.Baohanh).HasColumnName("BAOHANH");
 
                 entity.Property(e => e.Chitiet)
-                    .HasMaxLength(1000)
+                    .HasColumnType("longtext")
                     .HasColumnName("CHITIET");
 
                 entity.Property(e => e.Dongia).HasColumnName("DONGIA");
@@ -486,14 +509,26 @@ namespace demomysql.Models
 
                 entity.Property(e => e.Matintuc).HasColumnName("MATINTUC");
 
+                entity.Property(e => e.Hinhanh)
+                    .HasMaxLength(1000)
+                    .HasColumnName("HINHANH");
+
+                entity.Property(e => e.Hot)
+                    .HasColumnType("tinyint")
+                    .HasColumnName("HOT");
+
                 entity.Property(e => e.Manguoidung).HasColumnName("MANGUOIDUNG");
+
+                entity.Property(e => e.Motangan)
+                    .HasMaxLength(1000)
+                    .HasColumnName("MOTANGAN");
 
                 entity.Property(e => e.Ngaydang).HasColumnName("NGAYDANG");
 
                 entity.Property(e => e.Ngaysua).HasColumnName("NGAYSUA");
 
                 entity.Property(e => e.Noidung)
-                    .HasColumnType("varchar(10000)")
+                    .HasColumnType("longtext")
                     .HasColumnName("NOIDUNG");
 
                 entity.Property(e => e.Tieude)
@@ -505,6 +540,24 @@ namespace demomysql.Models
                     .HasForeignKey(d => d.Manguoidung)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_DANGTIN");
+            });
+
+            modelBuilder.Entity<Transaction>(entity =>
+            {
+                entity.HasKey(e => e.Idtransaction)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("transaction");
+
+                entity.Property(e => e.Idtransaction).HasColumnName("IDTRANSACTION");
+
+                entity.Property(e => e.Mota)
+                    .HasMaxLength(500)
+                    .HasColumnName("MOTA");
+
+                entity.Property(e => e.Tinhtrang)
+                    .HasMaxLength(200)
+                    .HasColumnName("TINHTRANG");
             });
 
             modelBuilder.Entity<Vaitronguoidung>(entity =>

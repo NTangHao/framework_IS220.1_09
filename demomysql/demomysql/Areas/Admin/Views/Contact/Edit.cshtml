@@ -1,0 +1,52 @@
+﻿@model demomysql.Models.Contact
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Contact</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Malh" />
+            <div class="form-group">
+                <label asp-for="Hoten" class="control-label"></label>
+                <input asp-for="Hoten" class="form-control" />
+                <span asp-validation-for="Hoten" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Noidung" class="control-label"></label>
+                <input asp-for="Noidung" class="form-control" />
+                <span asp-validation-for="Noidung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tinhtrangdon" class="control-label"></label>
+                <input asp-for="Tinhtrangdon" class="form-control" />
+                <span asp-validation-for="Tinhtrangdon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ngaygui" class="control-label"></label>
+                <input asp-for="Ngaygui" class="form-control" />
+                <span asp-validation-for="Ngaygui" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

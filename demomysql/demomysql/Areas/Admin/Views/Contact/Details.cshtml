@@ -1,0 +1,49 @@
+﻿@model demomysql.Models.Contact
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Contact</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hoten)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hoten)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Noidung)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Noidung)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tinhtrangdon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tinhtrangdon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ngaygui)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ngaygui)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Malh">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

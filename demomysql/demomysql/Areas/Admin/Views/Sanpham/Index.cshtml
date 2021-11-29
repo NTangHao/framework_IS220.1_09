@@ -5,112 +5,83 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Index</h2>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover myTable">
+        <thead>
+            <tr style="background-color:lightskyblue; color:black">
+                <th>
+                    @Html.DisplayNameFor(model => model.Tensp)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Dongia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Giakm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Baohanh)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Soluong)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Tinhtrangsp)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Hinhanh)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Tensp)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Chitiet)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Dongia)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Giakm)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Baohanh)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Luotxem)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Ngaydang)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Soluong)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Banchay)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Hinhanh)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Tinhtrangsp)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MadmNavigation)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MathuonghieuNavigation)
-                    </th>
-                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tensp)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dongia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Giakm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Baohanh)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soluong)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tinhtrangsp)
+                    </td>
+
+                    <td>
+                        <img width="150" height="131" src="~/images/sanphams/@item.Hinhanh" />
+                    </td>
+
+                    <td width="12%">
+                        <a asp-action="Edit" asp-route-id="@item.Masp" class="btn btn-success  rounded-0" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.Masp" class="btn btn-primary  rounded-0" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-table"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.Masp" class="btn btn-danger  rounded-0" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-trash"></i></a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tensp)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Chitiet)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Dongia)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Giakm)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Baohanh)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Luotxem)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ngaydang)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Soluong)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Banchay)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Hinhanh)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tinhtrangsp)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MadmNavigation.Madm)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MathuonghieuNavigation.Mathuonghieu)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Masp">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Masp">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Masp">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
 </div>
-
-
-

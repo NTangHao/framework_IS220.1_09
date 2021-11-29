@@ -1,0 +1,54 @@
+﻿@model IEnumerable<demomysql.Models.Giaohang>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tennguoigiao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaygiao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Xacnhan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tennguoigiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaygiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Xacnhan)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Magiaohang">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Magiaohang">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Magiaohang">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

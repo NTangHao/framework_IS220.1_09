@@ -1,0 +1,43 @@
+﻿@model demomysql.Models.Giaohang
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Giaohang</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tennguoigiao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tennguoigiao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ngaygiao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ngaygiao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sdt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sdt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Xacnhan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Xacnhan)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Magiaohang">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

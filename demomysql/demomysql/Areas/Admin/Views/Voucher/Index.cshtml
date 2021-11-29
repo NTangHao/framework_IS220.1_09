@@ -1,0 +1,60 @@
+﻿@model IEnumerable<demomysql.Models.Voucher>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaybd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaykt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trangthai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaybd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaykt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trangthai)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Mavoucher">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Mavoucher">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Mavoucher">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

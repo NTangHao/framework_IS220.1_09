@@ -30,8 +30,11 @@ namespace demomysql.Models
         public string Tinhtrangthanhtoan { get; set; }
         public DateTime? Ngaythanhtoan { get; set; }
         public DateTime? Ngayhethan { get; set; }
-        public string Transactionid { get; set; }
+        public bool? Bestseller { get; set; }
+        public bool? Homeflag { get; set; }
+        public int? Idtransaction { get; set; }
 
+        public virtual Transaction IdtransactionNavigation { get; set; }
         public virtual Giaohang MagiaohangNavigation { get; set; }
         public virtual Nguoidung ManguoidungNavigation { get; set; }
         public virtual Voucher MavoucherNavigation { get; set; }

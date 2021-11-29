@@ -1,6 +1,7 @@
 ﻿using demomysql.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +28,13 @@ namespace demomysql.Areas.Admin.Controllers
 
           
             linhkienchinhthucContext db = new linhkienchinhthucContext();
-            //var query = db.Nguoidungs.FirstOrDefault(u => u.Username == username && u.Password == password);
-            var data = db.Nguoidungs.Where(s => s.Username.Equals(username) && s.Password.Equals(password)).ToList();
+            
+            var data = db.Nguoidungs.Where(s => s.Username.Equals(username) && s.Password.Equals(password) &&s.Maquyen.Equals(1)).ToList();
             if (data.Count() > 0)
             {
-                TempData["userlogin"] = username;
-                //HttpContext.Session.SetString("username", username);
+                //TempData["userlogin"] = username;
+                //HttpContext.Session.SetString("userlogin", username);
+                HttpContext.Session.SetString("SessionAdmin", JsonConvert.SerializeObject(data));
                 return RedirectToAction("Index", "Home");
             }
 

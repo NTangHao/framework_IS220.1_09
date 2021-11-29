@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using demomysql.Models;
 namespace demomysql.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         [Area("Admin")]
         public ActionResult Index()

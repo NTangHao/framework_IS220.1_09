@@ -1,0 +1,420 @@
+﻿@model demomysql.Models.Sanpham
+@using demomysql.Models;
+@using demomysql.Extension;
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Thuonghieu thuonghieu = ViewBag.tenthuonghieu;
+    Danhmuc danhmuc = ViewBag.tendanhmuc;
+    List<Anhthem> dsanh = ViewBag.hinhanhthem;
+    List<Sanpham> dslienquan = ViewBag.sanphamlienquan;
+}
+
+
+<!-- Begin Main Content Area  -->
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="~/assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h1 class="breadcrumb-heading">@Model.Tensp</h1>
+                        <ul>
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Home <i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>@Model.Tensp</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-product-area section-space-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-product-img h-100">
+                        <div class="swiper-container single-product-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="~/images/sanphams/@Model.Hinhanh" class="single-img gallery-popup">
+                                        <img class="img-full" src="~/images/sanphams/@Model.Hinhanh" alt="@Model.Hinhanh">
+                                    </a>
+                                </div>
+                                @if (dsanh != null && dsanh.Count() > 0)
+                                {
+                                    foreach (var item in dsanh)
+                                    {
+                                        <div class="swiper-slide">
+                                            <a href="~/images/hinhanhthems/@item.Linkanh" class="single-img gallery-popup">
+                                                <img class="img-full" src="~/images/hinhanhthems/@item.Linkanh" alt="@item.Linkanh">
+                                            </a>
+                                        </div>
+                                    }
+                                }
+
+
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product-thumb-with-content row">
+                        <div class="col-12 order-lg-1 order-2 pt-10 pt-lg-0">
+                            <div class="single-product-content">
+                                <h2 class="title">@Model.Tensp</h2>
+                                <div class="price-box pb-1">
+
+                                    @if (Model.Giakm == 0)
+                                    {
+                                    <span class="new-price text-danger">@Extension.ToVnd((double)(Model.Dongia))</span>
+                                    }
+                                    else
+                                    {
+                                <span class="new-price text-danger">@Extension.ToVnd((double)Model.Dongia-(double)Model.Dongia* (double)Model.Giakm)</span>
+                                <span class="old-price text-primary">@Extension.ToVnd((double)(Model.Dongia))</span>
+                                    }
+
+                                </div>
+                                <div class="rating-box-wrap pb-7">
+                                    <div class="rating-box">
+                                        <ul>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="review-status ps-4">
+                                        <a href="javascript:void(0)">( 1 Customer Review )</a>
+                                    </div>
+                                </div>
+                                <p class="short-desc mb-6">
+                                    <span style="font-size:15pt"><strong>Thông tin chung:</strong></span>
+                                    <div class=" text-matterhorn pb-2">
+
+                                        <ul>
+                                            <li>
+                                                <strong>Thương hiệu:</strong>
+                                                <a style="font-size:13pt" href="javascript:void(0)">@thuonghieu.Tenthuonghieu</a>
+                                            </li>
+                                            <li>
+                                                <strong>Danh mục:</strong>
+                                                <a style="font-size:13pt" asp-controller="Product" asp-action="ListDanhmucSP" asp-route-tendm="@danhmuc.Tendm" >@danhmuc.Tendm</a>
+                                            </li>
+                                            <li>
+                                                <strong>Bảo hành:</strong>
+                                                <a style="font-size:13pt" >@Model.Baohanh</a>
+                                            </li>
+                                            <li>
+                                                <strong>Tình trạng:</strong>
+                                                <a style="font-size:13pt" >@Model.Tinhtrangsp</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                </p>
+                                <form  asp-controller="Shoppingcart" asp-action="AddToCart" asp-route-id="@Model.Masp">
+                                    <ul class="quantity-with-btn pb-7">
+                                        <li class="quantity">
+                                            <div class="cart-plus-minus">
+                                                <input name="soluong" class="cart-plus-minus-box" value="1" type="text">
+                                            </div>
+                                        </li>
+                                        <li class="add-to-cart">
+                                            <button class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0"  >Đặt hàng</button>
+                                        </li>
+                                        <li class="wishlist-btn-wrap">
+                                            <a class="btn rounded-0" href="wishlist.html">
+                                                <i class="pe-7s-like"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </form>
+                              
+                                
+                            </div>
+                        </div>
+                        <div class="col-12 order-lg-2 order-1 pt-10 pt-lg-0">
+                            <div class="swiper-container single-product-thumbs">
+                                <div class="swiper-wrapper">
+                                    <a href="javascript:void(0)" class="swiper-slide">
+                                        <img class="img-full" src="~/images/sanphams/@Model.Hinhanh" alt="@Model.Hinhanh">
+                                    </a>
+                                    @if (dsanh != null && dsanh.Count() > 0)
+                                    {
+                                        foreach (var item in dsanh)
+                                        {
+                                            <a href="javascript:void(0)" class="swiper-slide">
+                                                <img class="img-full" src="~/images/hinhanhthems/@item.Linkanh" alt="@item.Linkanh">
+                                            </a>
+                                        }
+                                    }
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-tab-area section-space-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav product-tab-nav product-tab-style-2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="active btn btn-custom-size" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
+                                Mô tả
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-custom-size" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
+                                Bình luận
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-custom-size" id="shipping-tab" data-bs-toggle="tab" href="#shipping" role="tab" aria-controls="shipping" aria-selected="false">
+                                Shipping
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content product-tab-content">
+                        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <div class="product-description-body">
+                                <p class="short-desc mb-0">
+                                  @Html.Raw(Model.Chitiet)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="product-review-body">
+                                <h4 class="heading mb-5">3 Review Items</h4>
+                                <ul class="user-info-wrap">
+                                    <li>
+                                        <ul class="user-info">
+                                            <li class="user-avatar">
+                                                <img src="~/assets/images/testimonial/user/1.png" alt="User Image">
+                                            </li>
+                                            <li class="user-comment">
+                                                <div class="rating-box">
+                                                    <ul>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="meta">
+                                                    <span><strong>Oscar -</strong> March 15, 2021</span>
+                                                </div>
+                                                <p class="short-desc mb-0">
+                                                    “Sed ligula sapien, fermentum id est eget,
+                                                    viverra auctor sem. Vivamus maximus enim vitae urna porta, ut
+                                                    euismod nibh lacinia ellentesque at diam voluptas quas nisi, culpa
+                                                    in accusantium“
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul class="user-info">
+                                            <li class="user-avatar">
+                                                <img src="~/assets/images/testimonial/user/1.png" alt="User Image">
+                                            </li>
+                                            <li class="user-comment">
+                                                <div class="rating-box">
+                                                    <ul>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="meta">
+                                                    <span><strong>Oscar -</strong> March 15, 2021</span>
+                                                </div>
+                                                <p class="short-desc mb-0">
+                                                    “Sed ligula sapien, fermentum id est eget,
+                                                    viverra auctor sem. Vivamus maximus enim vitae urna porta, ut
+                                                    euismod nibh lacinia ellentesque at diam voluptas quas nisi, culpa
+                                                    in accusantium“
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul class="user-info">
+                                            <li class="user-avatar">
+                                                <img src="~/assets/images/testimonial/user/1.png" alt="User Image">
+                                            </li>
+                                            <li class="user-comment">
+                                                <div class="rating-box">
+                                                    <ul>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                        <li><i class="pe-7s-star"></i></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="meta">
+                                                    <span><strong>Oscar -</strong> March 15, 2021</span>
+                                                </div>
+                                                <p class="short-desc mb-0">
+                                                    “Sed ligula sapien, fermentum id est eget,
+                                                    viverra auctor sem. Vivamus maximus enim vitae urna porta, ut
+                                                    euismod nibh lacinia ellentesque at diam voluptas quas nisi, culpa
+                                                    in accusantium“
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="feedback-area pt-5">
+                                    <h2 class="heading mb-1">Add a review</h2>
+                                    <p class="short-desc mb-3">Your email address will not be published.</p>
+                                    <div class="rating-box">
+                                        <span>Your rating</span>
+                                        <ul class="ps-4">
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                            <li><i class="pe-7s-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <form class="feedback-form pt-8" action="#">
+                                        <div class="group-input">
+                                            <div class="form-field me-md-6 mb-6 mb-md-0">
+                                                <input type="text" name="name" placeholder="Your Name*" class="input-field">
+                                            </div>
+                                            <div class="form-field me-md-6 mb-6 mb-md-0">
+                                                <input type="text" name="email" placeholder="Your Email*" class="input-field">
+                                            </div>
+                                            <div class="form-field">
+                                                <input type="text" name="number" placeholder="Phone number" class="input-field">
+                                            </div>
+                                        </div>
+                                        <div class="form-field mt-6">
+                                            <textarea name="message" placeholder="Message" class="textarea-field"></textarea>
+                                        </div>
+                                        <div class="button-wrap mt-8">
+                                            <button type="submit" value="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover btn-lg rounded-0" name="submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                            <div class="product-shipping-body">
+                                <h4 class="title">Giao hàng</h4>
+                                <p class="short-desc mb-4">
+                                    Sản phẩm được giao trong 5 ngày
+                                    Đội ngũ giao hảng uy tìn đến từ Kraken.vn. Dảm bảo mọi quyền lợi đến với khách hàng
+                                </p>
+                                <h4 class="title">Đổi trả khi có lỗi</h4>
+                                <p class="short-desc mb-4">
+                                    Nếu sản phẩm bị lỗi sẽ được đổi trả trong vòng 7 ngày từ ngày nhận hàng
+                                </p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-slider-area section-space-top-95 section-space-bottom-100">
+        <div class="container">
+            <div class="section-title text-center pb-55">
+                <span class="sub-title text-primary">Xem thêm</span>
+                <h2 class="title mb-0">Sản phẩm liên quan</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="swiper-slider-holder swiper-arrow">
+                        <div class="swiper-container product-slider border-issue">
+                            <div class="swiper-wrapper">
+
+                                @if (dslienquan != null && dslienquan.Count() > 0)
+                                {
+                                    foreach (var item in dslienquan)
+                                    {
+                                        <div class="swiper-slide">
+                                            <div class="product-item">
+                                                <div class="product-img img-zoom-effect">
+                                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Masp">
+                                                        <img class="img-full" src="~/images/sanphams/@item.Hinhanh" alt="@item.Hinhanh">
+                                                    </a>
+                                                    <div class="product-add-action">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="cart.html">
+                                                                    <i class="pe-7s-cart"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="compare.html">
+                                                                    <i class="pe-7s-shuffle"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="wishlist.html">
+                                                                    <i class="pe-7s-like"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content texx">
+                                                    <a class="product-name" asp-controller="Product" asp-action="Details" asp-route-id="@item.Masp">@item.Tensp</a>
+                                                    <div class="price-box pb-1">
+                                                        @if (item.Giakm == 0)
+                                                        {
+                                                            <span class="new-price">@Extension.ToVnd((double)(item.Dongia))</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="new-price">@Extension.ToVnd((double)Model.Dongia-(double)Model.Dongia * (double)Model.Giakm)</span>
+                                                        }
+
+
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <ul>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                            <li><i class="pe-7s-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+
+
+                            </div>
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here  -->

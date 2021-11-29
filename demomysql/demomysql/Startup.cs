@@ -1,4 +1,5 @@
 //using demomysql.Data;
+using AspNetCoreHero.ToastNotification;
 using demomysql.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,9 +28,14 @@ namespace demomysql
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<linhkienchinhthucContext>(options =>
                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddNotyf(config => { config.DurationInSeconds = 2; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,17 +55,23 @@ namespace demomysql
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute(
-                //    name: "default",
-                //    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
-            name: "areas",
-            pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+
+
+
             });
         }
     }

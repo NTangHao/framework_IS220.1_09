@@ -1,0 +1,108 @@
+﻿@model demomysql.Models.Tintuc
+
+@{
+    ViewData["Title"] = Model.Tieude;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Tintuc> Baivietlienquan = ViewBag.Baivietlienquan;
+}
+
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h1 class="breadcrumb-heading">@Model.Tieude</h1>
+                        <ul>
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Home <i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>Blog</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog-detail-item">
+                        <div class="blog-img">
+                            <img class="img-full" src="~/images/tintucs/@Model.Hinhanh" alt="@Model.Tieude">
+                        </div>
+                        <div class="blog-content text-start pb-0">
+                            <div class="blog-meta text-dim-gray pb-3">
+                                <ul>
+                                    <li class="date"><i class="fa fa-calendar-o me-2"></i>@Model.Ngaydang.Value.ToShortDateString()</li>
+                                    <li>
+                                        <span class="comments me-3">
+                                            <a href="javascript:void(0)">2 Comments</a>
+                                        </span>
+                                        <span class="link-share">
+                                            <a href="javascript:void(0)">Share</a>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h5 class="title mb-4">
+                                <a asp-controller="Blog" asp-action="Details" asp-route-id="@Model.Matintuc">@Model.Tieude</a>
+                            </h5>
+                            <p class="short-desc mb-4 mb-7">@Model.Motangan</p>
+                            @Model.Noidung
+                            <blockquote class="pt-6 pb-5 mb-5">
+                                <div class="inner-content">
+                                    <p class="mb-0">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> labore
+                                        <span class="user-name ms-5 mb-0">Jont utdo</span>
+                                    </p>
+                                </div>
+                            </blockquote>
+                            
+                            <div class="feedback-area section-space-top-55">
+                                <h4 class="heading mb-1">Bài viết liên quan</h4>
+                                <div class="widgets-area mb-9">
+                                    <h2 class="widgets-title mb-5">Top bài viết hot</h2>
+                                    <div class="widgets-item">
+                                        <div class="swiper-container widgets-list-slider style-2">
+                                            <div class="swiper-wrapper">
+                                                @if (Baivietlienquan.Count() > 0)
+                                                {
+                                                    foreach (var item in Baivietlienquan)
+                                                    {
+                                                        <div class="swiper-slide">
+                                                            <div class="product-list-item">
+                                                                <div class="product-img img-zoom-effect">
+                                                                    <a a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Matintuc">
+                                                                        <img class="img-full" src="~/images/tintucs/@item.Hinhanh" alt="@item.Tieude">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-content">
+                                                                    <h5 class="title mb-3">
+                                                                        <a a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Matintuc">@item.Tieude</a>
+                                                                    </h5>
+                                                                    <div class="blog-meta text-manatee pb-1">
+                                                                        <ul>
+                                                                            <li class="date">@item.Ngaydang.Value.ToShortDateString()</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

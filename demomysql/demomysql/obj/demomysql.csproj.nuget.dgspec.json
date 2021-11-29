@@ -40,6 +40,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AspNetCoreHero.ToastNotification": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.12, )"
@@ -67,6 +75,14 @@
             "MySql.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "PagedList.Core.Mvc": {
+              "target": "Package",
+              "version": "[3.0.0, )"
             }
           },
           "imports": [

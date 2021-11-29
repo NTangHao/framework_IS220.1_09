@@ -28,6 +28,7 @@ namespace demomysql.Models
         public DateTime? Ngaysua { get; set; }
         public string Vaitro { get; set; }
         public bool? Trangthai { get; set; }
+        public string Dienthoai { get; set; }
 
         public virtual Danhgium MadanhgiaNavigation { get; set; }
         public virtual Vaitronguoidung MaquyenNavigation { get; set; }

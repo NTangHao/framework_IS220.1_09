@@ -1,0 +1,55 @@
+﻿@model demomysql.Models.Tintuc
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Tintuc</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tieude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tieude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Noidung)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Noidung)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ngaydang)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ngaydang)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ngaysua)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ngaysua)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hinhanh)
+        </dt>
+        <dd class="col-sm-10">
+            <img width="200" height="200" src="~/images/tintucs/@Model.Hinhanh" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManguoidungNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManguoidungNavigation.Manguoidung)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Matintuc">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

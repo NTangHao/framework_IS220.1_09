@@ -6,17 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using demomysql.Models;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace demomysql.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class NguoidungController : Controller
+    public class NguoidungController : BaseController
     {
+        public INotyfService _notyfService { get; }
         private readonly linhkienchinhthucContext _context;
 
-        public NguoidungController(linhkienchinhthucContext context)
+        public NguoidungController(linhkienchinhthucContext context, INotyfService notyfService)
         {
             _context = context;
+            _notyfService = notyfService;
         }
 
         // GET: Admin/Nguoidung
@@ -24,6 +27,7 @@ namespace demomysql.Areas.Admin.Controllers
         {
             var linhkienchinhthucContext = _context.Nguoidungs.Include(n => n.MadanhgiaNavigation).Include(n => n.MaquyenNavigation);
             return View(await linhkienchinhthucContext.ToListAsync());
+            
         }
 
         // GET: Admin/Nguoidung/Details/5
@@ -65,7 +69,9 @@ namespace demomysql.Areas.Admin.Controllers
             {
                 _context.Add(nguoidung);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                _notyfService.Success("Tạo mới thành công");
+                return RedirectToAction("Index");
+
             }
             ViewData["Madanhgia"] = new SelectList(_context.Danhgia, "Madanhgia", "Madanhgia", nguoidung.Madanhgia);
             ViewData["Maquyen"] = new SelectList(_context.Vaitronguoidungs, "Maquyen", "Maquyen", nguoidung.Maquyen);
@@ -81,6 +87,7 @@ namespace demomysql.Areas.Admin.Controllers
             }
 
             var nguoidung = await _context.Nguoidungs.FindAsync(id);
+
             if (nguoidung == null)
             {
                 return NotFound();
@@ -108,11 +115,13 @@ namespace demomysql.Areas.Admin.Controllers
                 {
                     _context.Update(nguoidung);
                     await _context.SaveChangesAsync();
+                    _notyfService.Success("Cập nhật thành công");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!NguoidungExists(nguoidung.Manguoidung))
                     {
+                        _notyfService.Error("Không tìm thấy");
                         return NotFound();
                     }
                     else
@@ -155,6 +164,7 @@ namespace demomysql.Areas.Admin.Controllers
             var nguoidung = await _context.Nguoidungs.FindAsync(id);
             _context.Nguoidungs.Remove(nguoidung);
             await _context.SaveChangesAsync();
+            _notyfService.Success("Xóa thành công");
             return RedirectToAction(nameof(Index));
         }
 

@@ -12,8 +12,22 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 2 "F:\HTTT tren framework\demomysql\demomysql\Areas\Admin\Views\_ViewImports.cshtml"
+using demomysql;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "F:\HTTT tren framework\demomysql\demomysql\Areas\Admin\Views\_ViewImports.cshtml"
+using demomysql.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ce977eb5db50296ebd0723b89e6d2910cc3b7449", @"/Areas/Admin/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"31c00c09162de4a4a5279e54ac51880c75d51122", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"77ae6cb0f6deecd87176af4f860faeae4649d7b4", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

@@ -1,0 +1,299 @@
+﻿@using demomysql.Extension;
+@using demomysql.Models;
+@using demomysql.ModelViews;
+
+@{
+    List<Nguoidung> khachdangnhap = ViewBag.IsAuthenticated;
+}
+<header class="main-header_area position-relative">
+    
+    <div class="header-middle py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="header-middle-wrap">
+                        <a asp-controller="Home" asp-action="Index" class="header-logo">
+                            <img src="~/assets/images/logo/logopage.png" alt="Header Logo" >
+                        </a>
+                        <div class="header-search-area d-none d-lg-block" >
+                            <form action="#" class="header-searchbox">
+                                <select class="nice-select select-search-category wide">
+                                    <option value="all">Danh mục</option>
+                                    <option value="product-item">Product Item</option>
+                                    <option value="product-item-2">Product Item 02</option>
+                                    <option value="product-item-3">Product Item 03</option>
+                                    <option value="product-item-4">Product Item 04</option>
+                                    <option value="product-item-5">Product Item 05</option>
+                                </select>
+                                <input class="input-field" type="text" placeholder="Tìm kiếm sản phẩm">
+                                <button class="btn btn-outline-whisper btn-primary-hover" type="submit"><i class="pe-7s-search"></i></button>
+                            </form>
+                        </div>
+                        <div class="header-right">
+                            <ul>
+                                <li class="dropdown d-none d-md-block">
+                                    <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button" id="settingButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="pe-7s-users"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
+
+
+
+
+                                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Dashboard">Thông tin tài khoản</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Register">Đăng ký</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Login">Đăng nhập</a></li>
+
+
+
+
+                                    </ul>
+                                </li>
+                                <li class="d-none d-md-block">
+                                    <a href="wishlist.html">
+                                        <i class="pe-7s-like"></i>
+                                    </a>
+                                </li>
+                                <li class="d-block d-lg-none">
+                                    <a href="#searchBar" class="search-btn toolbar-btn">
+                                        <i class="pe-7s-search"></i>
+                                    </a>
+                                </li>
+                                <li class="minicart-wrap me-3 me-lg-0">
+                                    <a href="#miniCart" class="minicart-btn toolbar-btn">
+                                        <i class="pe-7s-shopbag"></i>
+                                        <span class="quantity" id="cart-count">
+
+                                            @{
+
+                                                var gh = Context.Session.Get<List<CartItem>>("Giohang");
+                                                if (gh == default(List<CartItem>))
+                                                {
+                                                    gh = new List<CartItem>();
+                                                }
+                                             
+                                            }
+                                            @(gh.Sum(x => x.soluong))
+                                        </span>
+
+                                    </a>
+                                </li>
+                                <li class="mobile-menu_wrap d-block d-lg-none">
+                                    <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
+                                        <i class="pe-7s-menu"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-header header-sticky" data-bg-color="#bac34e">
+        <div class="container">
+            <div class="main-header_nav position-relative">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 d-none d-lg-block">
+                        <div class="main-menu">
+                            <nav class="main-nav">
+                                <ul>
+                                    <li class="drop-holder">
+                                        <a asp-controller="Home" asp-action="Index">
+                                            Trang chủ
+                                        </a>
+
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Home" asp-action="About">Về chúng tôi</a>
+                                    </li>
+                                    <li class="megamenu-holder">
+                                        <a asp-controller="Product" asp-action="Index">
+                                            Sản phẩm
+
+                                        </a>
+
+                                    </li>
+                                    <li class="drop-holder">
+                                        <a href="javascript:void(0)">
+                                            Chính sách vận chuyển
+
+                                        </a>
+
+                                    </li>
+                                    <li class="drop-holder">
+                                        <a asp-controller="Blog" asp-action="Index">
+                                            Tin tức
+
+                                        </a>
+
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Home" asp-action="Contact">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu_wrapper" id="mobileMenu">
+        <div class="harmic-offcanvas-body">
+            <div class="inner-body">
+                <div class="harmic-offcanvas-top">
+                    <a href="#" class="button-close"><i class="pe-7s-close"></i></a>
+                </div>
+                <div class="offcanvas-user-info text-center px-6 pb-5">
+                    <div class=" text-silver">
+                        <p class="shipping mb-0">Free delivery on order over <span class="text-primary">$200</span></p>
+                    </div>
+                    <ul class="dropdown-wrap justify-content-center text-silver">
+                        <li class="dropdown dropup">
+                            <button class="btn btn-link dropdown-toggle ht-btn" type="button" id="languageButtonTwo" data-bs-toggle="dropdown" aria-expanded="false">
+                                English
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="languageButtonTwo">
+                                <li><a class="dropdown-item" href="#">French</a></li>
+                                <li><a class="dropdown-item" href="#">Italian</a></li>
+                                <li><a class="dropdown-item" href="#">Spanish</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropup">
+                            <button class="btn btn-link dropdown-toggle ht-btn usd-dropdown" type="button" id="currencyButtonTwo" data-bs-toggle="dropdown" aria-expanded="false">
+                                USD
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="currencyButtonTwo">
+                                <li><a class="dropdown-item" href="#">GBP</a></li>
+                                <li><a class="dropdown-item" href="#">ISO</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropup">
+                            <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button" id="settingButtonTwo" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="pe-7s-users"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButtonTwo">
+                                <li><a class="dropdown-item" href="my-account.html">My account</a></li>
+                                <li><a class="dropdown-item" href="login-register.html">Login | Register</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="wishlist.html">
+                                <i class="pe-7s-like"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="offcanvas-menu_area">
+                    <nav class="offcanvas-navigation">
+                        <ul class="mobile-menu">
+                            <li class="menu-item-has-children">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <span class="mm-text">
+                                        Trang chủ
+
+                                    </span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="About">
+                                    <span class="mm-text">Về chúng tôi</span>
+                                </a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a asp-controller="Product" asp-action="Index">
+                                    <span class="mm-text">
+                                        Sản phẩm
+                                    </span>
+                                </a>
+
+                            </li>
+
+
+                            <li>
+                                <a asp-controller="Home" asp-action="Contact">
+                                    <span class="mm-text">Liên hệ</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-search_wrapper" id="searchBar">
+        <div class="harmic-offcanvas-body">
+            <div class="container h-100">
+                <div class="offcanvas-search">
+                    <div class="harmic-offcanvas-top">
+                        <a href="#" class="button-close"><i class="pe-7s-close"></i></a>
+                    </div>
+                    <span class="searchbox-info">Start typing and press Enter to search</span>
+                    <form action="#" class="hm-searchbox">
+                        <input type="text" placeholder="Search">
+                        <button class="search-btn" type="submit"><i class="pe-7s-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-minicart_wrapper" id="miniCart">
+        <div class="harmic-offcanvas-body">
+            <div class="minicart-content">
+                <div class="minicart-heading">
+                    <h4 class="mb-0">Shopping Cart</h4>
+                    <a href="#" class="button-close"><i class="pe-7s-close"></i></a>
+                </div>
+                <ul class="minicart-list">
+                    <li class="minicart-product">
+                        <a class="product-item_remove" href="#">
+                            <i class="pe-7s-close"></i>
+                        </a>
+                        <a href="shop.html" class="product-item_img">
+                            <img class="img-full" src="~/assets/images/product/small-size/1-1-112x124.jpg" alt="Product Image">
+                        </a>
+                        <div class="product-item_content">
+                            <a class="product-item_title" href="shop.html">Black Pepper Grains</a>
+                            <span class="product-item_quantity">1 x $80.00</span>
+                        </div>
+                    </li>
+                    <li class="minicart-product">
+                        <a class="product-item_remove" href="#">
+                            <i class="pe-7s-close"></i>
+                        </a>
+                        <a href="shop.html" class="product-item_img">
+                            <img class="img-full" src="~/assets/images/product/small-size/1-2-112x124.jpg" alt="Product Image">
+                        </a>
+                        <div class="product-item_content">
+                            <a class="product-item_title" href="shop.html">Peanut Big Bean</a>
+                            <span class="product-item_quantity">1 x $80.00</span>
+                        </div>
+                    </li>
+                    <li class="minicart-product">
+                        <a class="product-item_remove" href="#">
+                            <i class="pe-7s-close"></i>
+                        </a>
+                        <a href="shop.html" class="product-item_img">
+                            <img class="img-full" src="~/assets/images/product/small-size/1-3-112x124.jpg" alt="Product Image">
+                        </a>
+                        <div class="product-item_content">
+                            <a class="product-item_title" href="shop.html">Dried Lemon Green</a>
+                            <span class="product-item_quantity">1 x $80.00</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="minicart-item_total">
+                <span>Subtotal</span>
+                <span class="ammount">$240.00</span>
+            </div>
+            <div class="group-btn_wrap d-grid gap-2">
+                <a asp-controller="Shoppingcart" asp-action="Index" class="btn btn-secondary btn-primary-hover">Giỏ hàng</a>
+                <a href="checkout.html" class="btn btn-secondary btn-primary-hover">Thanh toán</a>
+            </div>
+        </div>
+    </div>
+    <div class="global-overlay"></div>
+</header>

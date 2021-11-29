@@ -1,0 +1,52 @@
+﻿@model demomysql.Models.Voucher
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Voucher</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Mavoucher" />
+            <div class="form-group">
+                <label asp-for="Tenma" class="control-label"></label>
+                <input asp-for="Tenma" class="form-control" />
+                <span asp-validation-for="Tenma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ngaybd" class="control-label"></label>
+                <input asp-for="Ngaybd" class="form-control" />
+                <span asp-validation-for="Ngaybd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ngaykt" class="control-label"></label>
+                <input asp-for="Ngaykt" class="form-control" />
+                <span asp-validation-for="Ngaykt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tyle" class="control-label"></label>
+                <input asp-for="Tyle" class="form-control" />
+                <span asp-validation-for="Tyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trangthai" class="control-label"></label>
+                <input asp-for="Trangthai" class="form-control" />
+                <span asp-validation-for="Trangthai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

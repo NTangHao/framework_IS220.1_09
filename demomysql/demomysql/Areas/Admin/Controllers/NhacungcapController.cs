@@ -10,7 +10,7 @@ using demomysql.Models;
 namespace demomysql.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class NhacungcapController : Controller
+    public class NhacungcapController : BaseController
     {
         private readonly linhkienchinhthucContext _context;
 

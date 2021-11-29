@@ -2,6 +2,29 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "AspNetCoreHero.ToastNotification/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "lib/net5.0/AspNetCoreHero.ToastNotification.Views.dll": {},
+          "lib/net5.0/AspNetCoreHero.ToastNotification.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/AspNetCoreHero.ToastNotification.Views.dll": {},
+          "lib/net5.0/AspNetCoreHero.ToastNotification.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ],
+        "build": {
+          "buildTransitive/AspNetCoreHero.ToastNotification.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/AspNetCoreHero.ToastNotification.props": {}
+        }
+      },
       "BouncyCastle.NetCore/1.8.5": {
         "type": "package",
         "compile": {
@@ -82,6 +105,39 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Html.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.12": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Razor.Language": "5.0.12",
+          "Microsoft.CodeAnalysis.Razor": "5.0.12"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/5.0.12": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Razor.Extensions": "5.0.12",
+          "Microsoft.CodeAnalysis.Razor": "5.0.12",
+          "Microsoft.Extensions.DependencyModel": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ],
+        "build": {
+          "buildTransitive/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets": {}
+        }
+      },
       "Microsoft.AspNetCore.Razor/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -94,7 +150,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Razor.Language/5.0.0": {
+      "Microsoft.AspNetCore.Razor.Language/5.0.12": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
@@ -299,12 +355,12 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.Razor/5.0.0": {
+      "Microsoft.CodeAnalysis.Razor/5.0.12": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "5.0.0",
-          "Microsoft.CodeAnalysis.CSharp": "3.7.0",
-          "Microsoft.CodeAnalysis.Common": "3.7.0"
+          "Microsoft.AspNetCore.Razor.Language": "5.0.12",
+          "Microsoft.CodeAnalysis.CSharp": "3.8.0",
+          "Microsoft.CodeAnalysis.Common": "3.8.0"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.Razor.dll": {}
@@ -596,6 +652,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyModel/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
       "Microsoft.Extensions.Logging/5.0.0": {
@@ -938,7 +1003,7 @@
           "lib/netstandard2.1/MySql.EntityFrameworkCore.dll": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -946,6 +1011,30 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
+      },
+      "PagedList.Core/1.17.4": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
+        }
+      },
+      "PagedList.Core.Mvc/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "PagedList.Core": "1.17.4"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/PagedList.Core.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/PagedList.Core.Mvc.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "runtime.native.System/4.3.0": {
         "type": "package",
@@ -2118,6 +2207,30 @@
     }
   },
   "libraries": {
+    "AspNetCoreHero.ToastNotification/1.1.0": {
+      "sha512": "bCAYeD+b2pRelcOrHMNtYGVtRq+J2u+SAaND33v3u6qZCatHf4XSZOEPhBfCKJAjMGvsggtPKaNFnrv4VhwOfA==",
+      "type": "package",
+      "path": "aspnetcorehero.toastnotification/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
+        "aspnetcorehero.toastnotification.nuspec",
+        "build/AspNetCoreHero.ToastNotification.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/AspNetCoreHero.ToastNotification.props",
+        "buildTransitive/AspNetCoreHero.ToastNotification.props",
+        "lib/net5.0/AspNetCoreHero.ToastNotification.Views.dll",
+        "lib/net5.0/AspNetCoreHero.ToastNotification.dll",
+        "lib/netcoreapp3.1/AspNetCoreHero.ToastNotification.Views.dll",
+        "lib/netcoreapp3.1/AspNetCoreHero.ToastNotification.dll",
+        "logo-transparent.png",
+        "staticwebassets/notyf.min.css",
+        "staticwebassets/notyf.min.js",
+        "staticwebassets/toastify.css",
+        "staticwebassets/toastify.js"
+      ]
+    },
     "BouncyCastle.NetCore/1.8.5": {
       "sha512": "6uxsQw2UXrt82VQAWC2td3oBSJjUZ3P4u4DliagB8wf67KsU53V8sW9xwdF+IwZOOZFR0TCZuv/YKZ2BlrfAag==",
       "type": "package",
@@ -2251,6 +2364,37 @@
         "microsoft.aspnetcore.html.abstractions.nuspec"
       ]
     },
+    "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.12": {
+      "sha512": "thFRLILK718/P95vSYyPfWWDPwua5L6unyDqbTDqtEKphSdLlkx+w1LnDIiu7C3cgTr1RAL1daFYqQVB/Fwi9w==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.razor.extensions/5.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll",
+        "microsoft.aspnetcore.mvc.razor.extensions.5.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.razor.extensions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/5.0.12": {
+      "sha512": "LsAfxyLWjiU9bejOfpva8LpjCUWiOFmjDHu2woUHkapiUII4vmTyLb5Z5fsJjfyChTtq9ixciWz6HB6M3FACDg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.razor.runtimecompilation/5.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets",
+        "buildTransitive/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.xml",
+        "microsoft.aspnetcore.mvc.razor.runtimecompilation.5.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.razor.runtimecompilation.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Razor/2.2.0": {
       "sha512": "V54PIyDCFl8COnTp9gezNHpUNHk7F9UnerGeZy3UfbnwYvfzbo+ipqQmSgeoESH8e0JvKhRTyQyZquW2EPtCmg==",
       "type": "package",
@@ -2264,17 +2408,17 @@
         "microsoft.aspnetcore.razor.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Razor.Language/5.0.0": {
-      "sha512": "6yOBBASGfXMx1fY6hyjvG+oM3eR8vovIehDdEZW7jAV4gKlY4xuAvTm7Iw1fEq7KPunh2VrJwo7oRK1XxUn1OQ==",
+    "Microsoft.AspNetCore.Razor.Language/5.0.12": {
+      "sha512": "9E4YtCvm28Ep3rpgICkxtloKn2VyGmqaolYBXD7FS/1CS6OdICNHDf9R/Pdo/5Rf/TcJid28Xss/u6vs6XhE5A==",
       "type": "package",
-      "path": "microsoft.aspnetcore.razor.language/5.0.0",
+      "path": "microsoft.aspnetcore.razor.language/5.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll",
-        "microsoft.aspnetcore.razor.language.5.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.razor.language.5.0.12.nupkg.sha512",
         "microsoft.aspnetcore.razor.language.nuspec"
       ]
     },
@@ -2552,17 +2696,17 @@
         "microsoft.codeanalysis.csharp.workspaces.nuspec"
       ]
     },
-    "Microsoft.CodeAnalysis.Razor/5.0.0": {
-      "sha512": "s4u/6z/MQ35y/egrXf4WgJlUZf5GGvuba9mZ700dH4XxLBrA9Fw9kFZ8uymoATry7hwz5owvFhBVo+2VnoiGRg==",
+    "Microsoft.CodeAnalysis.Razor/5.0.12": {
+      "sha512": "/c/Be4k2jGhzuTtOln6KZVA3zpJAWg2PwuTTZrD/GwcCK0K4HR1SEnlnGYagvGXCJ7k+sePrClDOgqcJs7ufyg==",
       "type": "package",
-      "path": "microsoft.codeanalysis.razor/5.0.0",
+      "path": "microsoft.codeanalysis.razor/5.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.CodeAnalysis.Razor.dll",
-        "microsoft.codeanalysis.razor.5.0.0.nupkg.sha512",
+        "microsoft.codeanalysis.razor.5.0.12.nupkg.sha512",
         "microsoft.codeanalysis.razor.nuspec"
       ]
     },
@@ -2970,6 +3114,32 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.DependencyModel/5.0.0": {
+      "sha512": "umBECCoMC+sOUgm083yFr8SxTobUOcPFH4AXigdO2xJiszCHAnmeDl4qPphJt+oaJ/XIfV1wOjIts2nRnki61Q==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencymodel/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net451/Microsoft.Extensions.DependencyModel.dll",
+        "lib/net451/Microsoft.Extensions.DependencyModel.xml",
+        "lib/net461/Microsoft.Extensions.DependencyModel.dll",
+        "lib/net461/Microsoft.Extensions.DependencyModel.xml",
+        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.dll",
+        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.xml",
+        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll",
+        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.xml",
+        "microsoft.extensions.dependencymodel.5.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencymodel.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -3765,10 +3935,10 @@
         "mysql.entityframeworkcore.nuspec"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/13.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3787,12 +3957,56 @@
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
-        "newtonsoft.json.nuspec"
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "PagedList.Core/1.17.4": {
+      "sha512": "Me111vdmlPp4GGeHqvNlnv4Raq1f1F77fDsJebuKsHCZXG4v4kMDzd5h1YVDv/Q7q9DuVgueR9mxp7eO7Yj4LA==",
+      "type": "package",
+      "path": "pagedlist.core/1.17.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/PagedList.Core.dll",
+        "lib/net45/PagedList.Core.pdb",
+        "lib/net451/PagedList.Core.dll",
+        "lib/net451/PagedList.Core.pdb",
+        "lib/net461/PagedList.Core.dll",
+        "lib/net461/PagedList.Core.pdb",
+        "lib/net462/PagedList.Core.dll",
+        "lib/net462/PagedList.Core.pdb",
+        "lib/netcoreapp1.0/PagedList.Core.dll",
+        "lib/netcoreapp1.0/PagedList.Core.pdb",
+        "lib/netstandard1.0/PagedList.Core.dll",
+        "lib/netstandard1.0/PagedList.Core.pdb",
+        "lib/netstandard1.1/PagedList.Core.dll",
+        "lib/netstandard1.1/PagedList.Core.pdb",
+        "lib/netstandard1.2/PagedList.Core.dll",
+        "lib/netstandard1.2/PagedList.Core.pdb",
+        "lib/netstandard1.3/PagedList.Core.dll",
+        "lib/netstandard1.3/PagedList.Core.pdb",
+        "lib/netstandard1.4/PagedList.Core.dll",
+        "lib/netstandard1.4/PagedList.Core.pdb",
+        "lib/netstandard1.5/PagedList.Core.dll",
+        "lib/netstandard1.5/PagedList.Core.pdb",
+        "lib/netstandard1.6/PagedList.Core.dll",
+        "lib/netstandard1.6/PagedList.Core.pdb",
+        "pagedlist.core.1.17.4.nupkg.sha512",
+        "pagedlist.core.nuspec"
+      ]
+    },
+    "PagedList.Core.Mvc/3.0.0": {
+      "sha512": "cfMopTUyfyDcZ/HL58w9DWmlb6M9yYYaJ0i3c1j8bGeZCHRyfX3Y5rDnPa1olFdqJmh8sRIx2aKMczGe++E9sA==",
+      "type": "package",
+      "path": "pagedlist.core.mvc/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.0/PagedList.Core.Mvc.dll",
+        "pagedlist.core.mvc.3.0.0.nupkg.sha512",
+        "pagedlist.core.mvc.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -7427,12 +7641,16 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "AspNetCoreHero.ToastNotification >= 1.1.0",
+      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 5.0.12",
       "Microsoft.EntityFrameworkCore >= 5.0.12",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.12",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.12",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.12",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
-      "MySql.EntityFrameworkCore >= 5.0.8"
+      "MySql.EntityFrameworkCore >= 5.0.8",
+      "Newtonsoft.Json >= 13.0.1",
+      "PagedList.Core.Mvc >= 3.0.0"
     ]
   },
   "packageFolders": {
@@ -7474,6 +7692,14 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "AspNetCoreHero.ToastNotification": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
+          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+            "target": "Package",
+            "version": "[5.0.12, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.12, )"
@@ -7501,6 +7727,14 @@
           "MySql.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.8, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
+          },
+          "PagedList.Core.Mvc": {
+            "target": "Package",
+            "version": "[3.0.0, )"
           }
         },
         "imports": [
