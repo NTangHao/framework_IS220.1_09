@@ -11,6 +11,8 @@ namespace demomysql.Models
         public int Madonhang { get; set; }
         public double? Dongia { get; set; }
         public int? Soluong { get; set; }
+        public double? Tongtien { get; set; }
+        public DateTime? Ngaytao { get; set; }
 
         public virtual Donhang MadonhangNavigation { get; set; }
         public virtual Sanpham MaspNavigation { get; set; }

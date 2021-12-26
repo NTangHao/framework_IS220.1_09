@@ -1,0 +1,46 @@
+﻿@model demomysql.Models.Donhang
+
+@{
+    ViewData["Title"] = "Thay đổi trạng thái";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="card">
+
+   <div class="card-body">
+       <form asp-area="Admin" asp-controller="Donhang" asp-action="ChangeStatus" asp-route-id="@Model.Madonhang">
+
+           <input type="hidden" asp-for="Madonhang" />
+           <div class="row">
+
+               <div class="col-md-6">
+                   <div class="form-group">
+                       <label>Chọn trang thái đơn hàng</label>
+                       <select class="form-control" asp-for="Idtransaction" asp-items="@ViewBag.Trangthai">
+                           <option value="0" disabled selected>Chọn trạng thái đơn hàng </option>
+                       </select>
+                   </div>
+               </div>
+           </div>
+
+
+           <div class="form-group">
+               <label>Chưa thanh toán</label>
+               <input id="Tinhtrangthanhtoan" name="Tinhtrangthanhtoan" type="radio" value="Chưa thanh toán" checked />
+               <label>Đã thanh toán</label>
+               <input id="Tinhtrangthanhtoan" name="Tinhtrangthanhtoan" type="radio" value="Đã thanh toán" />
+
+           </div>
+           <button type="submit" class="btn btn-success">Lưu thay đổi</button>
+       </form>
+
+   </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

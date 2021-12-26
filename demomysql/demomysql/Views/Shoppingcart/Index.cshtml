@@ -7,12 +7,12 @@
 }
 
 <main class="main-content">
-    <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/slider/inner-img/slideshow_11.png">
         <div class="container h-100">
             <div class="row h-100">
                 <div class="col-lg-12">
                     <div class="breadcrumb-item">
-                        <h2 class="breadcrumb-heading">Product Related</h2>
+                        <h2 class="breadcrumb-heading"></h2>
                         <ul>
                             <li>
                                 <a href="index.html">Home <i class="pe-7s-angle-right"></i></a>
@@ -30,7 +30,7 @@
                 <div class="col-12">
                     @if (Model != null && Model.Count() > 0)
                     {
-                        <form action="javascript:void(0)">
+                        <form>
                             <div class="table-content table-responsive">
                                 <table class="table">
                                     <thead>
@@ -49,19 +49,20 @@
                                             <tr>
                                                 <td class="product_remove">
                                                     <a asp-controller="Shoppingcart" asp-action="RemoveItem" asp-route-id="@item.masp">
-                                                        <i class="pe-7s-close" title="Remove"></i>
+
+                                                        <i class="fa fa-trash" title="Remove"></i>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:void(0)">
+                                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.masp">
                                                         <img src="~/images/sanphams/@item.hinhanh" alt="@item.hinhanh" width="112" height="124">
                                                     </a>
                                                 </td>
-                                                <td class="product-name"><a href="javascript:void(0)">@item.tensp</a></td>
+                                                <td class="product-name"><a asp-controller="Product" asp-action="Details" asp-route-id="@item.masp">@item.tensp</a></td>
                                                 <td class="product-price"><span class="amount">@item.dongia.ToVnd()</span></td>
                                                 <td class="quantity">
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="@item.soluong" type="text">
+                                                    <div>
+                                                        <input style="width:60px; text-align:center" min="1" data-id="@item.masp" data-dongia="@item.dongia" class="ajax-update-cart cart-plus-minus-box" value="@item.soluong" type="number">
                                                     </div>
                                                 </td>
                                                 <td class="product-subtotal"><span class="amount">@item.thanhtien.ToVnd()</span></td>
@@ -75,12 +76,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="coupon-all">
-                                        <div class="coupon">
-                                            <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                            <input class="button mt-xxs-30" name="apply_coupon" value="Apply coupon" type="submit">
-                                        </div>
+                                        
                                         <div class="coupon2">
-                                            <input class="button" name="update_cart" value="Update cart" type="submit">
+                                            <input class="button capnhat" name="update_cart" value="Cập nhật" type="submit">
                                         </div>
                                     </div>
                                 </div>
@@ -88,12 +86,25 @@
                             <div class="row">
                                 <div class="col-md-5 ml-auto">
                                     <div class="cart-page-total">
-                                        <h2>Cart totals</h2>
+                                        <h2>Tổng đơn hàng</h2>
                                         <ul>
-                                            <li>Subtotal <span>$118.60</span></li>
-                                            <li>Total <span>$118.60</span></li>
+
+                                            <li>
+                                                Tổng tiền <span>
+                                                    @{
+
+                                                        var gh = Context.Session.Get<List<CartItem>>("Giohang");
+                                                        if (gh == default(List<CartItem>))
+                                                        {
+                                                            gh = new List<CartItem>();
+                                                        }
+
+                                                    }
+                                                    @(gh.Sum(x => x.thanhtien).ToVnd())
+                                                </span>
+                                            </li>
                                         </ul>
-                                        <a href="javascript:void(0)">Proceed to checkout</a>
+                                        <a asp-controller="Checkout" asp-action="Index">Thanh toán</a>
                                     </div>
                                 </div>
                             </div>
@@ -118,4 +129,30 @@
         </div>
     </div>
 </main>
+@section Scripts{
+ 
+    <script>
 
+        $(document).ready(function () {
+            $(".ajax-update-cart").click(function () {
+
+                $.ajax({
+                    url: "/Shoppingcart/UpdateCart",
+                    data: {
+                        id: $(this).data("id"),
+                        soluong: parseInt($(this).val()),
+
+                    },
+
+                });
+            });
+          
+        });
+
+      
+        $('.ajax-add-to-cart').click(function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+}

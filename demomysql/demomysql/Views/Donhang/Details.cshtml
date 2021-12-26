@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Donhang donhang = ViewBag.donghang;
+}
+@using demomysql.Models;
+
+@model List<Ctdh>
+<h3>Thông tin đơn hàng: #@donhang.Madonhang</h3>
+<div class="mt-5 col-md-12"><strong>Ngày đặt hàng:</strong>  @donhang.Ngaydat</div>
+<div class="mt-5 col-md-12"> <strong>Tình trạng thanh toán:</strong> @donhang.Tinhtrangthanhtoan</div>
+<div class="mt-5 col-md-12 mb-5"> <strong>Tổng tiền:</strong> @donhang.Tongdon.Value.ToString("#,##0") VNĐ</div>
+
+@if (donhang.MavoucherNavigation != null)
+{
+    <p>Tên voucher: @donhang.MavoucherNavigation.Tenma</p>
+    <p>Tỷ lệ giảm: @donhang.MavoucherNavigation.Tyle %</p>
+    <p>Giá giảm:@((Model.Sum(x=> x.Soluong*x.Dongia)* donhang.MavoucherNavigation.Tyle/100).Value.ToString("#,##0") )</p>
+    <hr>
+}
+<table class="table table-responsive table-bordered">
+    <tbody>
+        <tr>
+            <th style="width:25%">Mã đơn hàng</th>
+            <th style="width:25%">Sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width:20%"><a class="account-order-id" href="javascript:void(0)">#@item.Madonhang</a></td>
+                    <td>@item.MaspNavigation.Tensp</td>
+                    <td style="width:20%">@item.Soluong</td>
+                    <td style="width:20%">@item.Dongia.Value.ToString("#,##0") VNĐ</td>
+                    <td>
+                        @((item.Soluong *item.Dongia).Value.ToString("#,##0") )VNĐ
+                    </td>
+                </tr>
+            }
+        }
+
+
+    </tbody>
+</table>

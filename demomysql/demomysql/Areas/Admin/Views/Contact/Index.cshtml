@@ -50,9 +50,9 @@
                 @Html.DisplayFor(modelItem => item.Ngaygui)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Malh">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Malh">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Malh">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Malh" class="btn btn-primary">Sửa</a> 
+                <a  asp-action="ContactUs" asp-route-id="@item.Malh" class="btn btn-success">Phản hồi</a> 
+                <a asp-action="Delete" asp-route-id="@item.Malh" class="btn btn-danger">Xóa</a>
             </td>
         </tr>
 }

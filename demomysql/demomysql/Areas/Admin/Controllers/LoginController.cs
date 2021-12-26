@@ -1,4 +1,5 @@
-﻿using demomysql.Models;
+﻿using demomysql.Extension;
+using demomysql.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -9,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace demomysql.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class LoginController : Controller
     {
-        [Area("Admin")]
+       
         [HttpGet]
         public IActionResult Index()
         {
@@ -21,7 +23,7 @@ namespace demomysql.Areas.Admin.Controllers
             }
             return View();
         }
-        [Area("Admin")]
+       
         [HttpPost]
         public IActionResult Index(string username, string password)
         {
@@ -29,12 +31,13 @@ namespace demomysql.Areas.Admin.Controllers
           
             linhkienchinhthucContext db = new linhkienchinhthucContext();
             
-            var data = db.Nguoidungs.Where(s => s.Username.Equals(username) && s.Password.Equals(password) &&s.Maquyen.Equals(1)).ToList();
-            if (data.Count() > 0)
+            var data = db.Nguoidungs.SingleOrDefault(s => s.Username.Equals(username) && s.Password.Equals(password) &&s.Maquyen.Equals(1));
+            if (data!=null)
             {
                 //TempData["userlogin"] = username;
                 //HttpContext.Session.SetString("userlogin", username);
                 HttpContext.Session.SetString("SessionAdmin", JsonConvert.SerializeObject(data));
+               // HttpContext.Session.Set("SessionAdmin", data);
                 return RedirectToAction("Index", "Home");
             }
 
@@ -47,6 +50,13 @@ namespace demomysql.Areas.Admin.Controllers
             }
 
             
+        }
+
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("SessionAdmin");
+            return RedirectToAction("Index");
         }
     }
 }

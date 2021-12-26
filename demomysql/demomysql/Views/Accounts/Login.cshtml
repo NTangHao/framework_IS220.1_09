@@ -1,0 +1,51 @@
+﻿@model demomysql.ModelViews.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="col-4 pt-7 mx-auto pb-10">
+    <div class="row">
+        @if (ViewBag.SuccessMsg != null)
+        {
+            <div id="msgAlert" class="alert alert-success" role="alert">
+                @ViewBag.SuccessMsg
+            </div>}
+    </div>
+    <form asp-controller="Accounts" asp-action="Login" method="post">
+        <div class="login-form">
+            <h1 class="login-title">Đăng nhập</h1>
+            <div class="row">
+                <div class="col-lg-12">
+                    <label>Tài khoản*</label>
+                    <input asp-for="UserName" type="text" placeholder="Tên tài khoản Email">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="col-lg-12">
+                    <label>Mật khẩu</label>
+                    <input asp-for="Password" type="password" placeholder="Mật khẩu">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="col-md-8">
+                    <div class="check-box">
+                        <input type="checkbox" id="remember_me">
+                        <label for="remember_me">Ghi nhớ đăng nhập </label>
+                    </div>
+                </div>
+                <div class="col-md-4 pt-1 mt-md-0">
+                    <div class="forgotton-password_info">
+                        <a href="#"> Quên mật khẩu?</a>
+                    </div>
+                </div>
+                <div class="col-lg-12 pt-5">
+                    <button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Đăng nhập</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

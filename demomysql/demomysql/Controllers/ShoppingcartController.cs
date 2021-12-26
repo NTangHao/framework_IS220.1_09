@@ -30,7 +30,8 @@ namespace demomysql.Controllers
                 {
                     gh = new List<CartItem>();
                 }
-                
+
+              
                 return gh;
                 
             }
@@ -43,11 +44,17 @@ namespace demomysql.Controllers
 
        public IActionResult AddToCart(int id,int soluong, string type="normal")
         {
-            var myCart = Giohang;
+            List<CartItem> myCart = Giohang;
            var item = myCart.SingleOrDefault(x => x.masp == id);
             if (item == null)
             {
                 var sanpham = _context.Sanphams.SingleOrDefault(x => x.Masp == id);
+                if (sanpham.Soluong < soluong)
+                {
+                    _notyfService.Error("Sản phẩm không đủ");
+                    return RedirectToAction("Index");
+                }
+               
                 item = new CartItem
                 {
                     masp = id,
@@ -70,8 +77,8 @@ namespace demomysql.Controllers
                
                 return Json(new
                 {
-                    soluong = Giohang.Sum(x=> x.soluong)
-                    
+                    soluong = Giohang.Sum(x=> x.soluong),
+                    tongtien = Giohang.Sum(x=> x.thanhtien)
                 });
             }
            
@@ -83,19 +90,53 @@ namespace demomysql.Controllers
         public IActionResult RemoveItem (int id)
         {
 
-            var myCart = Giohang;
+           var myCart = Giohang;
             var item = myCart.SingleOrDefault(x => x.masp == id);
             var sanpham = _context.Sanphams.SingleOrDefault(x => x.Masp == id);
           
             myCart.Remove(item);
 
-
+           HttpContext.Session.Set("Giohang", myCart);// cap nhat lai session gio hang moi
 
             return RedirectToAction("Index");
 
         }
+        
+        public IActionResult UpdateCart(int id, int? soluong)
+        {
+            List<CartItem> myCart = Giohang;
+            CartItem item = myCart.SingleOrDefault(x=> x.masp== id);
+           
+      
+            
+           
+            if (item != null &&soluong.HasValue)
+            {
+                item.soluong = soluong.Value;
+            }
+
+            HttpContext.Session.Set("Giohang", myCart);// cap nhat lai session gio hang moi
+                                                       // HttpContext.Session.Set<List<CartItem>>("Giohang", Giohang);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Voucher(string ma)
+        {
+            List<CartItem> myCart = Giohang;
+          
+
+            var check = _context.Vouchers.SingleOrDefault(s => s.Tenma.Equals(ma));
+            if (check!=null)
+            {
+
+            }
 
 
+
+            HttpContext.Session.Set("Giohang", myCart);// cap nhat lai session gio hang moi
+                                                       // HttpContext.Session.Set<List<CartItem>>("Giohang", Giohang);
+            return RedirectToAction("Index");
+        }
 
     }
 }

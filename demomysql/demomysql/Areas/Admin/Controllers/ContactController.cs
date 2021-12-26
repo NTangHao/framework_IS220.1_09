@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using demomysql.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace demomysql.Areas.Admin.Controllers
 {
@@ -18,6 +20,100 @@ namespace demomysql.Areas.Admin.Controllers
         {
             _context = context;
         }
+
+
+        [HttpGet]
+        public IActionResult ContactUs(int? id)
+        {
+
+            ViewBag.Message = TempData["guimail"];
+
+
+
+            var contact = _context.Contacts
+                .FirstOrDefault(m => m.Malh == id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+            ViewBag.lienhe = contact;
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public IActionResult ContactUs(SendMailDto sendMailDto,int? id)
+        {
+
+
+            if (!ModelState.IsValid) return View();
+
+            try
+            {
+                var contact = _context.Contacts
+               .FirstOrDefault(m => m.Malh == id);
+                if (contact == null)
+                {
+                    return NotFound();
+                }
+                ViewBag.lienhe = contact;
+                
+
+                MailMessage mail = new MailMessage();
+
+                mail.From = new MailAddress("emailnguoigui@gmail.com");
+
+
+                mail.To.Add(sendMailDto.Mailto);
+
+                mail.Subject = sendMailDto.Subject;
+
+
+                mail.IsBodyHtml = true;
+
+                string content = "Họ tên : " + sendMailDto.Name;
+                content += "<br/> Nội dung : " + sendMailDto.Message;
+
+                mail.Body = content;
+
+
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+
+                NetworkCredential networkCredential = new NetworkCredential("emailnguoigui@gmail.com", "matkhaunguoigui");
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = networkCredential;
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
+                smtpClient.Send(mail);
+
+                ViewBag.Message = "Gửi thành công";
+                contact.Tinhtrangdon = "Đã phản hồi";
+                _context.Update(contact);
+                _context.SaveChanges();
+                TempData["guimail"] = ViewBag.Message;
+                ModelState.Clear();
+
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.Message = ex.Message.ToString();
+                TempData["guimail"] = ViewBag.Message;
+            }
+            return View();
+
+
+        }
+
+
+
+
+
+
+
+
+
 
         // GET: Admin/Contact
         public async Task<IActionResult> Index()

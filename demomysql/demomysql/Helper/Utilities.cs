@@ -159,7 +159,7 @@ namespace demomysql.Helper
                     return newname;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return null;
             }

@@ -5,7 +5,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-area="Admin" asp-controller="Home" asp-action="Index">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -45,6 +45,7 @@
                 <a class="collapse-item" asp-area="Admin" asp-controller="Sanpham" asp-action="Index">Sản phẩm</a>
                 <a class="collapse-item" asp-area="Admin" asp-controller="Danhmuc" asp-action="Index">Danh mục sản phẩm</a>
                 <a class="collapse-item" asp-area="Admin" asp-controller="Thuonghieu" asp-action="Index">Thương hiệu</a>
+                <a class="collapse-item" asp-area="Admin" asp-controller="Donhang" asp-action="Index">Đơn hàng</a>
             </div>
         </div>
     </li>
@@ -62,8 +63,8 @@
                 <h6 class="collapse-header">Custom Utilities:</h6>
                 <a class="collapse-item" asp-area="Admin" asp-controller="Tintuc" asp-action="Index">Tin tức</a>
                 <a class="collapse-item" asp-area="Admin" asp-controller="Anhthem" asp-action="Index">Hình ảnh</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+                <a class="collapse-item" asp-area="Admin" asp-controller="Voucher" asp-action="Index">Voucher</a>
+               
             </div>
         </div>
     </li>
@@ -88,29 +89,11 @@
                 <h6 class="collapse-header">Login Screens:</h6>
                 <a class="collapse-item" asp-area="Admin" asp-controller="Nguoidung" asp-action="Index">Người dùng</a>
                 <a class="collapse-item" asp-area="Admin" asp-controller="Vaitronguoidung" asp-action="Index">Quản lý quyền</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
+                <a class="collapse-item" asp-area="Admin" asp-controller="Contact" asp-action="Index">Contact</a>
+              
+             
             </div>
         </div>
-    </li>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Quản lý doanh số</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span>
-        </a>
     </li>
 
     <!-- Divider -->

@@ -1,0 +1,123 @@
+﻿@model demomysql.Models.Donhang
+
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+    List<Ctdh> chitiet = ViewBag.chitietdonhang;
+}
+
+<h1>Chi tiết đơn hàng</h1>
+
+<div class="page-container">
+
+
+    <!-- Content Wrapper START -->
+    <div class="main-content">
+        <div class="page-header">
+            
+            <div class="header-sub-title">
+                <nav class="breadcrumb breadcrumb-dash">
+                    <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+                    <a class="breadcrumb-item"  asp-action="Index">Đơn hàng</a>
+                    <span class="breadcrumb-item active">Chi tiết đơn hàng</span>
+                </nav>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div id="invoice" class="p-h-30">
+                        
+                        <div class="row m-t-19 lh-1">
+                            <div class="col-sm-9">
+                                <h3 class="p-l-10 m-t-10">Chi tiết hóa đơn:</h3>
+                                <address class="p-l-10 m-t-10">
+                                    <span class="font-weight-semibold text-dark">Họ tên: @Model.Hoten</span><br>
+                                    <span>Số điện thoại: @Model.Sdt </span><br>
+                                    <span>Địa chỉ:  @Model.Thanhpho, @Model.Quan, @Model.Diachi</span>
+                                </address>
+                            </div>
+                            <div class="col-sm-4">
+
+                                <div class="text-dark  d-inline-block">
+                                    <span class="font-weight-semibold text-dark">Ngày Đặt :@Model.Ngaydat.Value.ToShortDateString()</span>
+
+                                </div>
+                               
+                                <div class="text-dark  d-block">
+                                    <span class="font-weight-semibold text-dark">Ngày Ship:</span>
+                                    <span class="">25/7/2018</span>
+                                </div>
+                                <div class="text-dark  ">
+                                    <span class="font-weight-semibold text-dark">Tình trạng thanh toán: @Model.Tinhtrangthanhtoan</span>
+                                    
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="m-t-20">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Đơn giá</th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (chitiet != null && chitiet.Count() > 0)
+                                        {
+                                            @foreach (var item in chitiet)
+                                            {
+                                                <tr>
+                                                    <th>@item.Madonhang</th>
+                                                    <td>@item.MaspNavigation.Tensp</td>
+                                                    <td>@item.Soluong</td>
+                                                    <td>@item.MaspNavigation.Dongia.Value.ToString("#,##0")</td>
+                                                    <td>@((item.Soluong*item.MaspNavigation.Dongia).Value.ToString("#,##0")) </td>
+                                                </tr>
+                                            }
+
+                                        }
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row m-t-30 lh-1-8">
+                                <div class="col-sm-12">
+                                    <div class="float-right text-right">
+                                        @if (Model.MavoucherNavigation != null)
+                                        {
+                                            <p>Tên voucher: @Model.MavoucherNavigation.Tenma</p>
+                                            <p>Tỷ lệ giảm: @Model.MavoucherNavigation.Tyle %</p>
+                                            <p>Giá giảm:@((chitiet.Sum(x => x.Soluong * x.Dongia) * Model.MavoucherNavigation.Tyle / 100).Value.ToString("#,##0") )</p>
+                                            <hr>
+                                        }
+
+                                        <h3><span class="font-weight-semibold text-dark">Tổng tiền :</span> @Model.Tongdon.Value.ToString("#,##0")</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row m-v-20">
+                                <div class="col-sm-6">
+                                    <img class="img-fluid text-opacity m-t-5" width="100" src="assets/images/logo/logo.png" alt="">
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

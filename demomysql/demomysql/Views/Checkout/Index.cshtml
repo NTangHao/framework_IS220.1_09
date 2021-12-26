@@ -1,0 +1,386 @@
+﻿@model demomysql.ModelViews.MuaHangVM
+@using demomysql.ModelViews;
+@using demomysql.Extension;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<CartItem> carts = ViewBag.giohang;
+    Voucher giamgia = ViewBag.voucher;
+    var total = carts.Sum(x => x.thanhtien);
+}
+
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/slider/inner-img/slideshow_5.png">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading"></h2>
+                        <ul>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="checkout-area section-space-y-axis-100">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <form asp-controller="Checkout" asp-action="Index" method="post">
+                        <input hidden asp-for="CustomerId" />
+                        <div class="checkbox-form">
+                            <h3>ĐẶT HÀNG</h3>
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Họ tên*</label>
+                                        <input asp-for="FullName" placeholder="Họ tên" type="text">
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                        <label>Email <span class="required">*</span></label>
+                                        <input asp-for="Email" placeholder="Email" type="email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                        <label>Số điện thoại <span class="required">*</span></label>
+                                        <input asp-for="Phone" type="text">
+                                        <span asp-validation-for="Phone" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="checkout-form-list">
+                                        <label>Tỉnh / Thành phố <span class="required">*</span></label>
+                                        <select name="calc_shipping_provinces" required="">
+                                            <option value="">Tỉnh / Thành phố</option>
+                                        </select>
+                                        <input class="billing_address_1" asp-for="TinhThanh" type="hidden" value="">
+                                        <span asp-validation-for="TinhThanh" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="checkout-form-list">
+                                        <div>Quận / Huyện<span class="required">*</span></div>
+                                        <select name="calc_shipping_district" required="">
+                                            <option value="">Quận / Huyện</option>
+                                        </select>
+                                        <input class="billing_address_2" asp-for="QuanHuyen" type="hidden" value="">
+                                        <span asp-validation-for="QuanHuyen" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Địa chỉ <span class="required">*</span></label>
+                                        <input asp-for="Address" placeholder="Địa chỉ nhận hàng" type="text">
+                                        <span asp-validation-for="Address" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="order-notes">
+                                    <div class="checkout-form-list checkout-form-list-2">
+                                        <label>Ghi chú</label>
+                                        <textarea asp-for="Note" cols="30" rows="10" placeholder="Ghi chú giao hàng"></textarea>
+                                    </div>
+                                </div>
+                                
+                                
+                                <br>
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list create-acc">
+                                        <h5 for="cbox">Phương thức thanh toán</h5>
+                                    </div>
+
+                                </div>
+                                <div class="payment-method">
+                                    <div class="payment-accordion">
+                                        <div id="accordion">
+                                            <div class="card">
+                                                <div class="card-header" id="#payment-1">
+                                                    <h5 class="panel-title">
+                                                        <a href="javascript:void(0)" class="" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                                                          Thanh toán khi giao hàng.
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <p>
+                                                            Là phương thức khách hàng nhận hàng mới trả tiền. Áp dụng với tất cả các đơn hàng trên toàn quốc
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="#payment-2">
+                                                    <h5 class="panel-title">
+                                                        <a href="javascript:void(0)" class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false">
+                                                            Chuyển khoản MoMo
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <p>
+                                                            Chuyển khoản trực tiếp vào ví Momo. 0946700006
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="#payment-3">
+                                                    <h5 class="panel-title">
+                                                        <a href="javascript:void(0)" class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false">
+                                                            Chuyển khoản ngân hàng
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <p>
+                                                            Quý khách chuyển khoản trước theo thông tin dưới đây :
+
+                                                            Công ty Cổ Phần Thương Mại Máy Tính An Phát
+                                                            Tầng 5, Số 49 phố Thái Hà, Phường Trung Liệt, Quận Đống Đa, Thành phố Hà Nội, Việt Nam
+                                                            MST: 0108940873
+
+                                                            •Vietcombank chi nhánh Hoàn Kiếm - 0301 000 426 596
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="order-button-payment">
+                                    <input value="Hoàn tất đơn hàng" type="submit">
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="your-order">
+                        <h3>THÔNG TIN ĐƠN HÀNG</h3>
+                        <div class="your-order-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th> <strong>Sản phẩm</strong></th>
+                                        <th></th>
+                                        <th><strong>Số lượng</strong></th>
+                                        <th><strong>Thành tiền</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in carts)
+                                    {
+                                        <tr class="product" data-product-id="1016643777" data-variant-id="1031760433">
+                                            <td class="product-image">
+                                                <div class="product-thumbnail">
+                                                    <div class="product-thumbnail-wrapper">
+                                                        <img class="product-thumbnail-image" alt="@item.hinhanh" src="~/images/sanphams/@item.hinhanh">
+                                                    </div>
+
+                                                </div>
+                                            </td>
+                                            <td class="product-description">
+                                                <span class="product-description-name order-summary-emphasis">@item.tensp</span>
+
+                                            </td>
+                                            <td class="product-description">
+                                                <span class="product-description-name order-summary-emphasis">@item.soluong</span>
+
+                                            </td>
+
+                                            <td class="product-price">
+                                                <span class="order-summary-emphasis">@item.thanhtien.ToVnd()</span>
+                                            </td>
+                                        </tr>
+                                    }
+
+
+
+                                </tbody>
+                                <tfoot>
+
+                                    <tr class="order-total">
+                                        <th>Tổng tiền</th>
+                                        <td style="width:33%"><strong><span class="amount ">@(carts.Sum(x => x.thanhtien).ToVnd())</span></strong></td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th id="giamgia"></th>
+                                        <td><strong><span class="amount " id="tiengiamgia">  </span></strong></td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th style="width:30%" id="tongcong"></th>
+                                        <td><strong><span class="amount " id="TotalAmountAfterDcisount">  </span></strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                            <div class="col-md-12">
+                                <div class="coupon-all">
+                                    <div class="coupon">
+                                        <input asp-for="NameVoucher" class="input-text" value="" placeholder="Mã giảm giá" type="text" autocomplete="off">
+                                        <input class="button mt-xxs-30" id="Apply_Coupon" name="Apply_Coupon" value="Sử dụng" type="button">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="text-right mt-5 ">
+                            @*<button id="printhoadon" class="btn btn-white"><i class="fa fa-print"></i>In hóa đơn </button>*@
+                            @{Html.BeginForm("CreateDocument", "Checkout", FormMethod.Get);
+                                {
+                                    <div>
+                                      <button id="printhoadon" class="btn btn-white"><i class="fa fa-print"></i> In báo giá </button>
+                                    </div>
+                                }
+                                Html.EndForm();
+                            }
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@section Scripts{
+
+    <script src='https://cdn.jsdelivr.net/gh/vietblogdao/js/districts.min.js'></script>
+    <script>
+        //<![CDATA[
+       if (address_2 = localStorage.getItem('address_2_saved')) {
+                        $('select[name="calc_shipping_district"] option').each(function () {
+                            if ($(this).text() == address_2) {
+                                $(this).attr('selected', '')
+                            }
+                        })
+                        $('input.billing_address_2').attr('value', address_2)
+                    }
+        if (district = localStorage.getItem('district')) {
+            $('select[name="calc_shipping_district"]').html(district)
+            $('select[name="calc_shipping_district"]').on('change', function () {
+                var target = $(this).children('option:selected')
+                target.attr('selected', '')
+                $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+                address_2 = target.text()
+                $('input.billing_address_2').attr('value', address_2)
+                district = $('select[name="calc_shipping_district"]').html()
+                localStorage.setItem('district', district)
+                localStorage.setItem('address_2_saved', address_2)
+            })
+        }
+        $('select[name="calc_shipping_provinces"]').each(function () {
+            var $this = $(this),
+                stc = ''
+            c.forEach(function (i, e) {
+                e += +1
+                stc += '<option value=' + e + '>' + i + '</option>'
+                $this.html('<option value="">Tỉnh / Thành phố</option>' + stc)
+                if (address_1 = localStorage.getItem('address_1_saved')) {
+                    $('select[name="calc_shipping_provinces"] option').each(function () {
+                        if ($(this).text() == address_1) {
+                            $(this).attr('selected', '')
+                        }
+                    })
+                    $('input.billing_address_1').attr('value', address_1)
+                }
+                $this.on('change', function (i) {
+                    i = $this.children('option:selected').index() - 1
+                    var str = '',
+                        r = $this.val()
+                    if (r != '') {
+                        arr[i].forEach(function (el) {
+                            str += '<option value="' + el + '">' + el + '</option>'
+                            $('select[name="calc_shipping_district"]').html('<option value="">Quận / Huyện</option>' + str)
+                        })
+                        var address_1 = $this.children('option:selected').text()
+                        var district = $('select[name="calc_shipping_district"]').html()
+                        localStorage.setItem('address_1_saved', address_1)
+                        localStorage.setItem('district', district)
+                        $('select[name="calc_shipping_district"]').on('change', function () {
+                            var target = $(this).children('option:selected')
+                            target.attr('selected', '')
+                            $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+                            var address_2 = target.text()
+                            $('input.billing_address_2').attr('value', address_2)
+                            district = $('select[name="calc_shipping_district"]').html()
+                            localStorage.setItem('district', district)
+                            localStorage.setItem('address_2_saved', address_2)
+                        })
+                    } else {
+                        $('select[name="calc_shipping_district"]').html('<option value="">Quận / Huyện</option>')
+                        district = $('select[name="calc_shipping_district"]').html()
+                        localStorage.setItem('district', district)
+                        localStorage.removeItem('address_1_saved', address_1)
+                    }
+                })
+            })
+        })
+
+
+
+
+
+        function getcoupon() {
+
+            $.ajax({
+                type: "POST",
+                url: "/Checkout/Voucher",
+                data: { NameVoucher: $('#NameVoucher').val() },
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    //Check if Coupon is valid
+                    if (data==null) {
+                        alert("Không tìm thấy mã giảm giá");
+                    }
+                    var total = @(carts.Sum(x => x.thanhtien));
+                    //var PercentOftotal = (parseFloat((data.tyle / 100)) * parseFloat(total)); //calculate percent of total
+                   
+                    $("#tiengiamgia").html("-"+(total * parseFloat((data.tyle / 100))).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }));
+                    $("#TotalAmountAfterDcisount").html((total - total * parseFloat((data.tyle / 100))).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })  );
+                    $("#giamgia").html("Giảm giá: ");
+                    $("#tongcong").html("Tổng cộng: ");
+                    
+                },
+                failure: function (response) {
+                    alert("Failed");
+                }
+            });
+        }
+
+
+        $(document).ready(function () {
+
+            $("#Apply_Coupon").on('click', getcoupon);
+        })
+
+      
+//]]></script>
+
+}
+

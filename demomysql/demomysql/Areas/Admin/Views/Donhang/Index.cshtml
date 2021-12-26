@@ -1,0 +1,74 @@
+﻿@model IEnumerable<demomysql.Models.Donhang>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered table-hover myTable">
+    <thead>
+        <tr>
+            <th>
+                Mã đơn 
+            </th>
+            <th>
+               Ngày đặt
+            </th>
+
+            <th>
+               Tổng đơn
+            </th>
+            <th>
+               Họ tên
+            </th>
+            <th>
+              Sđt
+            </th>
+
+
+            <th>
+               Tình trạng
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Madonhang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaydat)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Tongdon.Value)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.IdtransactionNavigation.Tinhtrang)
+            </td>
+
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Madonhang" class="btn btn-primary">Xem</a> 
+                <a asp-action="ChangeStatus" asp-route-id="@item.Madonhang" class="btn btn-success">Cập nhật trạng thái</a> 
+                <a asp-action="Delete" asp-route-id="@item.Madonhang" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

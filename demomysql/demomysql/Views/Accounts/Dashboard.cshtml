@@ -1,0 +1,115 @@
+﻿@*@model IEnumerable<demomysql.Models.Nguoidung>*@
+@using demomysql.Models;
+@using demomysql.ModelViews;
+@model demomysql.Models.Nguoidung
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Donhang> donhang = ViewBag.dsdonhang;
+    demomysql.ModelViews.ChangePasswordViewModel changePassword = new demomysql.ModelViews.ChangePasswordViewModel();
+}
+
+
+
+
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h1 class="breadcrumb-heading">Thông tin tài khoản</h1>
+                        <ul>
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Home <i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>Thông tin tài khoản </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="account-page-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <ul class="nav myaccount-tab-trigger" id="account-page-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="account-dashboard-tab" data-bs-toggle="tab" href="#account-dashboard" role="tab" aria-controls="account-dashboard" aria-selected="true">Thông tin tài khoản</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" href="#account-orders" role="tab" aria-controls="account-orders" aria-selected="false">Danh sách đơn hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="account-address-tab" data-bs-toggle="tab" href="#account-address" role="tab" aria-controls="account-address" aria-selected="false">Thông tin cài đặt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="account-details-tab" data-bs-toggle="tab" href="#account-details" role="tab" aria-controls="account-details" aria-selected="false">Đổi mật khẩu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="account-logout-tab" asp-controller="Accounts" asp-action="Logout" role="tab" aria-selected="false">Đăng xuất</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-lg-9">
+                    <div class="col-lg-9">
+                        <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
+                            <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel" aria-labelledby="account-dashboard-tab">
+                                <div class="myaccount-dashboard">
+                                    <p>
+
+                                        Xin chào <b>@Model.Hoten </b>
+                                    </p>
+                                    <p>
+                                        Chào mừng đến với SHOP KRAKEN.VN
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-address" role="tabpanel" aria-labelledby="account-address-tab">
+                                <div class="myaccount-address">
+                                    <form asp-controller="Accounts" asp-action="UpdateAccount" method="post" class="myaccount-form">
+                                        <div class="myaccount-form-inner">
+                                            <div class="single-input single-input-half">
+                                                <label>Họ tên*</label>
+                                                <input id="Hoten" name="Hoten" type="text">
+                                            </div>
+                                            <div class="single-input single-input-half">
+                                                <label>Số điện thoại*</label>
+                                                <input id="dienthoai" name="dienthoai" type="text">
+                                            </div>
+                                          
+                                            <div class="single-input">
+                                                <button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0" type="submit">
+                                                    <span>LƯU</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
+                                <div class="myaccount-orders">
+                                    <h4 class="small-title">Danh sách đơn hàng</h4>
+                                    @await Html.PartialAsync("DonHangPartial", donhang)
+
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane fade" id="account-details" role="tabpanel" aria-labelledby="account-details-tab">
+                                <div class="myaccount-details">
+
+                                    @await Html.PartialAsync("ChangePassword", changePassword)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>

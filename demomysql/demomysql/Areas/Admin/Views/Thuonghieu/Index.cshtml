@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-bordered table-hover myTable">
     <thead>
         <tr>
             <th>
@@ -26,9 +26,9 @@
                 @Html.DisplayFor(modelItem => item.Tenthuonghieu)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Mathuonghieu">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Mathuonghieu">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Mathuonghieu">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Mathuonghieu" class="btn btn-primary">Thêm</a> 
+                <a asp-action="Details" asp-route-id="@item.Mathuonghieu" class="btn btn-success">Chi tiết</a> 
+                <a asp-action="Delete" asp-route-id="@item.Mathuonghieu" class="btn btn-danger">Xóa</a>
             </td>
         </tr>
 }

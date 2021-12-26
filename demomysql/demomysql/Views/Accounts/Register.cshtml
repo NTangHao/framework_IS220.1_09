@@ -1,0 +1,55 @@
+﻿@model demomysql.ModelViews.RegisterVM
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Đăng ký tài khoản</h1>
+
+<div class="col-lg-6 pt-7 mx-auto pb-10">
+    <div class="row">
+        @if (ViewBag.SuccessMsg != null)
+        {
+            <div id="msgAlert" class="alert alert-success" role="alert">
+                @ViewBag.SuccessMsg
+            </div>}
+    </div>
+    <form asp-action="Register" asp-controller="Accounts" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="login-form">
+            <h4 class="login-title">Đăng ký</h4>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <label>Họ tên</label>
+                    <input asp-for="FullName" type="text" placeholder="Họ tên">
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 col-12">
+                    <label>Số điện thoại</label>
+                    <input asp-for="Phone" type="text" placeholder="Số điện thoại">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="col-md-12">
+                    <label>Email*</label>
+                    <input asp-for="Email" type="email" placeholder="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Password</label>
+                    <input asp-for="Password" type="password" placeholder="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label>Confirm Password</label>
+                    <input asp-for="ConfirmPassword" type="password" placeholder="Password">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

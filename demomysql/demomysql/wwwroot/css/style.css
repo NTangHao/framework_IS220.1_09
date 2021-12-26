@@ -4,6 +4,17 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+.smart-search-wrapper {
+    left: 316px;
+    position: absolute;
+    background: #fff;
+    /* border: 1
+px
+ solid rgb(215, 215, 215); */
+    border-top: none;
+    z-index: 9999;
+}
+
 .product-row-thumbnail {
     width: 100%;
     min-height: 211px;

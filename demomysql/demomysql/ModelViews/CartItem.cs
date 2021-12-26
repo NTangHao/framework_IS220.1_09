@@ -12,7 +12,7 @@ namespace demomysql.ModelViews
         public string  hinhanh { get; set; }
         public double   dongia { get; set; }      
         public int soluong { get; set; }
-        
+        public int tonkho { get; set; }
         public double thanhtien => soluong * dongia;
         
     }

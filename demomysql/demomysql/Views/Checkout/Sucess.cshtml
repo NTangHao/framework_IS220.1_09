@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Sucess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using demomysql.Models;
+@model Donhang
+<div class="error-404-area section-space-top-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="error-404-content">
+                    <img src="~/images/icons/payment-successful.png" />
+                    <h2 class="sub-title mb-4 mt-5">Đặt hàng thành công!</h2>
+                    <h3>Mã đơn hàng: #@Model.Madonhang</h3>
+                    <h4>Thông tin giao hàng</h4>
+                    <div class="col-lg-12">
+                        <div class="mt-5 col-md-12"><strong>Ngày đặt hàng:</strong>  @Model.Ngaydat</div>
+                        <div class="mt-5 col-md-12"><strong>Người nhận hàng:</strong>  @Model.Hoten</div>
+                        <div class="mt-5 col-md-12"><strong>Số điện thoại:</strong>  @Model.Sdt</div>
+                        <div class="mt-5 col-md-12"><strong>Thành phố/Tỉnh:</strong>  @Model.Thanhpho </div>
+                        <div class="mt-5 col-md-12"><strong>Quận huyện:</strong>  @Model.Quan </div>
+                        <div class="mt-5 col-md-12 mb-5"><strong>Địa chỉ:</strong>  @Model.Diachi </div>
+                    </div>
+                    <div class="button-wrap">
+                        <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" asp-controller="Home" asp-action="Index">Quay lại trang chủ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

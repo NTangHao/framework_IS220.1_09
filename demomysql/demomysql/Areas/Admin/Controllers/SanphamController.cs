@@ -8,16 +8,20 @@ using Microsoft.EntityFrameworkCore;
 using demomysql.Models;
 using demomysql.Helper;
 using System.IO;
+using AspNetCoreHero.ToastNotification.Abstractions;
+
 namespace demomysql.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class SanphamController : BaseController
     {
+        public INotyfService _notyfService { get; }
         private readonly linhkienchinhthucContext _context;
 
-        public SanphamController(linhkienchinhthucContext context)
+        public SanphamController(linhkienchinhthucContext context, INotyfService notyfService)
         {
             _context = context;
+            _notyfService = notyfService;
         }
 
         // GET: Admin/Sanpham

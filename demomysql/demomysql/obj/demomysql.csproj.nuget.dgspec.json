@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\HTTT tren framework\\demomysql\\demomysql\\demomysql.csproj": {}
+    "F:\\HTTT tren framework\\GitHubchinhthuc\\framework_IS220.1_09\\demomysql\\demomysql\\demomysql.csproj": {}
   },
   "projects": {
-    "F:\\HTTT tren framework\\demomysql\\demomysql\\demomysql.csproj": {
+    "F:\\HTTT tren framework\\GitHubchinhthuc\\framework_IS220.1_09\\demomysql\\demomysql\\demomysql.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\HTTT tren framework\\demomysql\\demomysql\\demomysql.csproj",
+        "projectUniqueName": "F:\\HTTT tren framework\\GitHubchinhthuc\\framework_IS220.1_09\\demomysql\\demomysql\\demomysql.csproj",
         "projectName": "demomysql",
-        "projectPath": "F:\\HTTT tren framework\\demomysql\\demomysql\\demomysql.csproj",
+        "projectPath": "F:\\HTTT tren framework\\GitHubchinhthuc\\framework_IS220.1_09\\demomysql\\demomysql\\demomysql.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "F:\\HTTT tren framework\\demomysql\\demomysql\\obj\\",
+        "outputPath": "F:\\HTTT tren framework\\GitHubchinhthuc\\framework_IS220.1_09\\demomysql\\demomysql\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,6 +83,10 @@
             "PagedList.Core.Mvc": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "Syncfusion.XlsIO.Net.Core": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
             }
           },
           "imports": [

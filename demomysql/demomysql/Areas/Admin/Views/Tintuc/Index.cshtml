@@ -43,10 +43,10 @@
                 <img width="222" height="131" src="~/images/tintucs/@item.Hinhanh" />
             </td>
          
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Matintuc">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Matintuc">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Matintuc">Delete</a>
+            <td style="width:20%">
+                <a asp-action="Edit" asp-route-id="@item.Matintuc" class="btn btn-primary">Sửa</a> 
+                <a asp-action="Details" asp-route-id="@item.Matintuc" class="btn btn-success">Chi tiết</a> 
+                <a asp-action="Delete" asp-route-id="@item.Matintuc" class="btn btn-danger">Xóa</a>
             </td>
         </tr>
 }

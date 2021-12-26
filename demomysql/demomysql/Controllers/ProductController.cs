@@ -37,11 +37,28 @@ namespace demomysql.Controllers
             }
             
         }
+
+
+        public IActionResult Filter(double giatu, double giatoi, int?page)
+        {
+            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
+            var pageSize = 9;
+            var danhsachsanpham = _context.Sanphams
+                .Where(x=> x.Dongia>=giatu && x.Dongia<=giatoi)
+                .AsNoTracking()
+                .OrderByDescending(x => x.Ngaydang);
+            PagedList<Sanpham> models = new PagedList<Sanpham>(danhsachsanpham, pageNumber, pageSize);
+            ViewBag.CurrentPage = pageNumber;
+
+            return View(models);
+           
+        }
+
         public IActionResult ListDanhmucSP(string tendm, int page =1)// danh sach sản phẩm theo danh mục
         {
             try
             {
-                var pageSize = 2;
+                var pageSize = 9;
                 var danhmuc = _context.Danhmucs.SingleOrDefault(x => x.Tendm == tendm);
 
                 //var pageNumber = page == null || page <= 0 ? 1 : page.Value;
@@ -49,6 +66,7 @@ namespace demomysql.Controllers
                 PagedList<Sanpham> models = new PagedList<Sanpham>(sanphamdanhmuc, page, pageSize);
                 ViewBag.CurrentPage = page;
                 ViewBag.CurrentDm = danhmuc;
+               
                 return View(models);
 
                
@@ -67,6 +85,18 @@ namespace demomysql.Controllers
         public IActionResult Details(int id)
         {
                var sanpham = _context.Sanphams.FirstOrDefault(x => x.Masp == id);
+            if (sanpham.Luotxem==null)
+            {
+                sanpham.Luotxem = 1;
+                _context.Update(sanpham);
+                _context.SaveChanges();
+            }
+            else
+            {
+                sanpham.Luotxem = sanpham.Luotxem + 1;
+                _context.Update(sanpham);
+                _context.SaveChanges();
+            }
             var thuonghieu = _context.Thuonghieus.FirstOrDefault(x => x.Mathuonghieu == sanpham.Mathuonghieu);
             var danhmuc = _context.Danhmucs.FirstOrDefault(x => x.Madm == sanpham.Madm);
             var lshinhanh = _context.Anhthems.Where(x => x.Masp == id).ToList();

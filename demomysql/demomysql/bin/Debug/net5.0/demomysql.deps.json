@@ -43,6 +43,7 @@
           "MySql.EntityFrameworkCore": "5.0.8",
           "Newtonsoft.Json": "13.0.1",
           "PagedList.Core.Mvc": "3.0.0",
+          "Syncfusion.XlsIO.Net.Core": "19.4.0.38",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -1254,6 +1255,11 @@
           "lib/netstandard2.1/MySql.EntityFrameworkCore.dll": {}
         }
       },
+      "NETStandard.Library/2.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0"
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -1294,6 +1300,47 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
           "Microsoft.NETCore.Targets": "1.1.3"
+        }
+      },
+      "Syncfusion.Compression.Net.Core/19.4.0.38": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {
+            "assemblyVersion": "19.4200.0.38",
+            "fileVersion": "19.4200.0.38"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Licensing/19.4.0.38": {
+        "runtime": {
+          "lib/net5.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "19.4.0.38",
+            "fileVersion": "19.4.0.38"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.XlsIO.Net.Core/19.4.0.38": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "Syncfusion.Compression.Net.Core": "19.4.0.38",
+          "Syncfusion.Licensing": "19.4.0.38"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.XlsIO.Portable.dll": {
+            "assemblyVersion": "19.4200.0.38",
+            "fileVersion": "19.4200.0.38"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.XlsIO.Portable.dll": {}
         }
       },
       "System.Buffers/4.5.1": {},
@@ -4142,6 +4189,13 @@
       "path": "mysql.entityframeworkcore/5.0.8",
       "hashPath": "mysql.entityframeworkcore.5.0.8.nupkg.sha512"
     },
+    "NETStandard.Library/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
+      "path": "netstandard.library/2.0.0",
+      "hashPath": "netstandard.library.2.0.0.nupkg.sha512"
+    },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
       "serviceable": true,
@@ -4169,6 +4223,27 @@
       "sha512": "sha512-c/qWt2LieNZIj1jGnVNsE2Kl23Ya2aSTBuXMD6V7k9KWr6l16Tqdwq+hJScEpWER9753NWC8h96PaVNY5Ld7Jw==",
       "path": "runtime.native.system/4.3.0",
       "hashPath": "runtime.native.system.4.3.0.nupkg.sha512"
+    },
+    "Syncfusion.Compression.Net.Core/19.4.0.38": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6xqKv0j2excvLc4QuZ34QAUqSM7EU/B9xkJSl+zBU1vGa4ZY3sUwbeskxTTqvMY1byPOmJT7ANEySB7FZdRNrg==",
+      "path": "syncfusion.compression.net.core/19.4.0.38",
+      "hashPath": "syncfusion.compression.net.core.19.4.0.38.nupkg.sha512"
+    },
+    "Syncfusion.Licensing/19.4.0.38": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aO2/KBA53/uYDAs0cj0HYW+Hf3cYnyZUpo96IaijDoVvS+Vi9N7tEUVvnAbW84aQiJFZD5LOUxoEz18Dw74iAw==",
+      "path": "syncfusion.licensing/19.4.0.38",
+      "hashPath": "syncfusion.licensing.19.4.0.38.nupkg.sha512"
+    },
+    "Syncfusion.XlsIO.Net.Core/19.4.0.38": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oL4M0IERM/B5JRvEOXE3tvhp0lpPPuasKGUC83DNdgc/6BfwHZqUCGykXDHYIfkJhw35C9eWugTFEOx8yL9MFQ==",
+      "path": "syncfusion.xlsio.net.core/19.4.0.38",
+      "hashPath": "syncfusion.xlsio.net.core.19.4.0.38.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

@@ -70,7 +70,7 @@ namespace demomysql.Controllers
             if (HttpContext.Session.GetString("Sessionkhachhang") !=null)
             {
 
-                return RedirectToAction("Dashboard", "Account");
+                return RedirectToAction("Dashboard", "Accounts");
             }
             return View();
            

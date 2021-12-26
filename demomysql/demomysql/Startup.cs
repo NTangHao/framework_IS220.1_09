@@ -1,5 +1,6 @@
 //using demomysql.Data;
 using AspNetCoreHero.ToastNotification;
+using demomysql.Hubs;
 using demomysql.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,7 @@ namespace demomysql
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
             
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<linhkienchinhthucContext>(options =>
@@ -57,7 +59,7 @@ namespace demomysql
             app.UseRouting();
             app.UseSession();
             app.UseAuthorization();
-
+            app.UseAuthentication();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -69,7 +71,7 @@ namespace demomysql
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
-
+                endpoints.MapHub<ChatHub>("/chatHub");
 
 
             });

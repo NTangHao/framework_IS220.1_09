@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-2">Họ tên</div>
+        <div class="col-4"><input type="text" id="userInput" /></div>
+    </div>
+    
+    <div class="row">&nbsp;</div>
+    
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+
+
+
+
+<div class="container">
+
+    <div class="chat-panel panel mb-5 " style="width:500px">
+        <div class="panel-heading">
+          Hộp thoại
+            <i class="fa fa-paper-plane fa-fw"></i>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body overflow-auto" id="chat" style="height:250px;">
+            <input type="hidden" id="displayname" />
+
+            <p id="messagesList"></p>
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            <div class="input-group">
+                <input id="messageInput" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." />
+
+                <span class="input-group-btn">
+                    <input type="button" class="btn btn-warning " id="sendButton" value="Send">
+
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+

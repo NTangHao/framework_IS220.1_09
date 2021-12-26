@@ -144,7 +144,13 @@ namespace demomysql.Models
 
                 entity.Property(e => e.Dongia).HasColumnName("DONGIA");
 
+                entity.Property(e => e.Ngaytao)
+                    .HasColumnType("date")
+                    .HasColumnName("NGAYTAO");
+
                 entity.Property(e => e.Soluong).HasColumnName("SOLUONG");
+
+                entity.Property(e => e.Tongtien).HasColumnName("TONGTIEN");
 
                 entity.HasOne(d => d.MadonhangNavigation)
                     .WithMany(p => p.Ctdhs)
@@ -223,10 +229,6 @@ namespace demomysql.Models
 
                 entity.Property(e => e.Madonhang).HasColumnName("MADONHANG");
 
-                entity.Property(e => e.Bestseller)
-                    .HasColumnType("bit(1)")
-                    .HasColumnName("BESTSELLER");
-
                 entity.Property(e => e.Diachi)
                     .HasMaxLength(250)
                     .HasColumnName("DIACHI");
@@ -253,6 +255,10 @@ namespace demomysql.Models
 
                 entity.Property(e => e.Idtransaction).HasColumnName("IDTRANSACTION");
 
+                entity.Property(e => e.Khongdangky)
+                    .HasColumnType("tinyint")
+                    .HasColumnName("KHONGDANGKY");
+
                 entity.Property(e => e.Magiaohang).HasColumnName("MAGIAOHANG");
 
                 entity.Property(e => e.Manguoidung).HasColumnName("MANGUOIDUNG");
@@ -267,6 +273,10 @@ namespace demomysql.Models
 
                 entity.Property(e => e.Ngaythanhtoan).HasColumnName("NGAYTHANHTOAN");
 
+                entity.Property(e => e.Quan)
+                    .HasMaxLength(200)
+                    .HasColumnName("QUAN");
+
                 entity.Property(e => e.Sdt)
                     .HasMaxLength(50)
                     .HasColumnName("SDT");
@@ -274,6 +284,10 @@ namespace demomysql.Models
                 entity.Property(e => e.Sotheodoi)
                     .HasMaxLength(50)
                     .HasColumnName("SOTHEODOI");
+
+                entity.Property(e => e.Thanhpho)
+                    .HasMaxLength(200)
+                    .HasColumnName("THANHPHO");
 
                 entity.Property(e => e.Tinhtrangthanhtoan)
                     .HasMaxLength(100)

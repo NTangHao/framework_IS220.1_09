@@ -1,0 +1,14 @@
+﻿
+@model List<Sanpham>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (Model != null)
+{
+    @foreach (var item in Model)
+    {
+        <div class="bg-dark">@item.Tensp</div>
+    }
+}
+

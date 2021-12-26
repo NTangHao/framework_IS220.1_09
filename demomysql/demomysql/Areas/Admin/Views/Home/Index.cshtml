@@ -3,7 +3,165 @@
     ViewData["Title"] = "Index";
     //Layout = "~/Views/Shared/_Layout2.cshtml";
     Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+    var slkhach = ViewBag.slkhach;
+    int donhang = ViewBag.donhang;
+    double tongtien = ViewBag.tongtien;
+    var sp = ViewBag.tensp;
+    var soluong = ViewBag.slsanpham;
+    var slcontact = ViewBag.contact;
 }
 
-<h2>Day là trang admin chính</h2>
 
+
+
+<form asp-controller="Home" asp-action="Index" style=" width:fit-content; display:inline; margin-left:22px; margin-bottom:10px">
+    <select name="thang" id="thang" class="mb-3" style="margin-left:300px">
+        <option value="">Tháng</option>
+        <option value="1">Tháng 1</option>
+        <option value="2">Tháng 2</option>
+        <option value="3">Tháng 3</option>
+        <option value="4">Tháng 4</option>
+        <option value="5">Tháng 5</option>
+        <option value="6">Tháng 6</option>
+        <option value="7">Tháng 7</option>
+        <option value="8">Tháng 8</option>
+        <option value="9">Tháng 9</option>
+        <option value="10">Tháng 10</option>
+        <option value="11">Tháng 11</option>
+        <option value="12">Tháng 12</option>
+    </select>
+    <input class="button mt-xxs-30"  value="Thống kê" type="submit">
+</form>
+
+<div class="row">
+
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Đơn hàng(trong ngày)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@donhang</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Tổng tiền tháng
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@tongtien.ToString("#,##0") VND</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Khách hàng đăng ký
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@slkhach</div>
+                            </div>
+                            <div class="col">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    <div class="progress-bar bg-info" role="progressbar"
+                                         style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Contact(trong ngày)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@slcontact</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+
+
+   var model = @Html.Raw(Json.Serialize(sp));
+   var quantity = @Html.Raw(Json.Serialize(soluong));
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: model,
+            datasets: [{
+                label: 'Số lượng còn',
+                data: quantity,
+                backgroundColor: [
+                   
+                    'rgba(54, 162, 235, 0.2)',
+                    
+                ],
+                borderColor: [
+                   
+                    'rgba(54, 162, 235, 1)',
+                   
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

@@ -1,0 +1,54 @@
+﻿@model SendMailDto
+@using demomysql.Models;
+@{
+    ViewData["Title"] = "ContactUs";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout2.cshtml";
+    Contact lienhe = ViewBag.lienhe;
+}
+
+<h1>Phản hồi</h1>
+<div class="page-header">
+
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a class="breadcrumb-item" asp-action="Index">Liên hệ</a>
+            <span class="breadcrumb-item active">Phản hồi</span>
+        </nav>
+    </div>
+</div>
+<h2>@ViewBag.Message</h2>
+
+<div class="mt-3 mb-3">
+    Họ tên người gửi: @lienhe.Hoten
+</div>
+
+<div class="mt-3 mb-3">
+    Nội dung người gửi: @lienhe.Noidung
+</div>
+
+<form method="post">
+    <div class="form-group">
+        <label > Địa chỉ đến</label>
+        <input type="text" asp-for="@Model.Mailto"  class="form-control" value="@lienhe.Email">
+        <span class="text-danger" asp-validation-for="@Model.Mailto"></span>
+    </div>
+    <div class="form-group">
+        <label> Tên</label>
+        <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Nhập tên người gửi">
+        <span class="text-danger" asp-validation-for="@Model.Name"></span>
+    </div>
+    <div class="form-group">
+        <label >Tiêu đề</label>
+        <input type="text" asp-for="@Model.Subject" class="form-control" placeholder="Nhập tiêu đề">
+        <span class="text-danger" asp-validation-for="@Model.Subject"></span>
+    </div>
+    <div class="form-group">
+        <label >Nội dung</label>
+        <textarea class="form-control" asp-for="@Model.Message" placeholder="Nhập nội dung"></textarea>
+        <span class="text-danger" asp-validation-for="@Model.Message"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Gửi Mail</button>
+
+</form>
+
