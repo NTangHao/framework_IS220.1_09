@@ -10,7 +10,7 @@
 Giới thiệu về đồ án
 ###################
 
- Đồ án bán linh kiện máy tính.
+ Đồ án xây dựng website thương mại điện tử kinhh doanh mặt hàng linh kiện máy tính.
 *******************
 Các chức năng của đồ án:
 *******************
