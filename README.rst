@@ -52,6 +52,10 @@ Các bước cài đặt
 
 2. Thay đổi passwork trong appsetting.json cho đúng với database của workbench. Nếu xài phpmysql thì khỏi cần passwork
 
+3. Password người khách hàng có sẵn: tk: khoale@gmail.com, mật khẩu: benten2801
+
+4. Để vô trang admin. gõ /Admin trên trang chính localhost. tk: haohan2801, mật khẩu: 123
+
 
 
 
