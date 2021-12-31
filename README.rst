@@ -1,10 +1,10 @@
 # framework_IS220.1_09
 
 
-- 19521479 - Nguyễn Tăng Hảo
-- 19520631 - Đỗ Lê Anh Khoa
-- 19521804 - Trần Phi Long
-- 19521513 - Thân Trung Hiếu
+- 19521479 - Nguyễn Tăng Hảo (100%). https://www.facebook.com/profile.php?id=100029866783334
+- 19520631 - Đỗ Lê Anh Khoa (100%). https://www.facebook.com/khoadole21
+- 19521804 - Trần Phi Long (100%). https://www.facebook.com/Phongli.J
+- 19521513 - Thân Trung Hiếu (100%) https://www.facebook.com/hieuthanln
 
 ###################
 Giới thiệu về đồ án
@@ -54,38 +54,5 @@ Các bước cài đặt
 
 
 
-************
-Installation
-************
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
-
-*******
-License
-*******
-
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <https://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
 
