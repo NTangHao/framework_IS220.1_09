@@ -6,7 +6,7 @@
 - 19521804 - Trần Phi Long
 - 19521513 - Thân Trung Hiếu
 
-**Đồ án bán linh kiện máy tính: giỏ hàng, in hóa đơn excel**
+``Đồ án bán linh kiện máy tính: giỏ hàng, in hóa đơn excel``
 
 - **Vào thư mục Database chạy file script sql trong mysql workbench. Đặt tên database là : linhkienchinhthuc** 
 - **Thay đổi passwork trong appsetting.json cho đúng với database của workbench. Nếu xài phpmysql thì khỏi cần passwork**
@@ -15,11 +15,11 @@
 Giới thiệu về đồ án
 ###################
 
-Đồ án bán linh kiện máy tính.
+Đồ án xây dựng website thương mại điện tử kinh doanh mặt hàng linh kiện máy tính.
+
 *******************
 Các chức năng của đồ án:
 *******************
-
 
 - Giỏ hàng 
 - In hóa đơn excel 
