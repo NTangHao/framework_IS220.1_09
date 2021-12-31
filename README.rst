@@ -6,35 +6,35 @@
 - 19521804 - Trần Phi Long
 - 19521513 - Thân Trung Hiếu
 
-``Đồ án bán linh kiện máy tính: giỏ hàng, in hóa đơn excel``
-
-- **Vào thư mục Database chạy file script sql trong mysql workbench. Đặt tên database là : linhkienchinhthuc** 
-- **Thay đổi passwork trong appsetting.json cho đúng với database của workbench. Nếu xài phpmysql thì khỏi cần passwork**
-
 ###################
 Giới thiệu về đồ án
 ###################
 
-Đồ án xây dựng website thương mại điện tử kinh doanh mặt hàng linh kiện máy tính.
-
+ Đồ án bán linh kiện máy tính.
 *******************
 Các chức năng của đồ án:
 *******************
 
+
 - Giỏ hàng 
+
 - In hóa đơn excel 
+
 - Đăng ký/đăng nhập
+- Plugin bình luận facebook
+- Phân trang giữa các sản phẩm, tin tức
+- Tìm kiếm sản phẩm 
+- Lọc giá sản phẩm
 - Quản lý đơn hàng lịch sử
+- Xem tin tức
 - Hủy đơn hàng, 
 - Sử dụng voucher
 - Quản trị admin 
 - Gửi email google cho khách hàng,
 - Chat giữa các khách hàng 
+- Thêm xóa sửa cơ bản cho các nhiệm vụ quản lý trong database
 
-
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+Các công nghệ: Ajax, SMTP mail, Jquery, Signal R
 
 **************************
 Cài đặt chương trình website
@@ -45,14 +45,14 @@ Cơ sở dữ liệu: Mysql
 Các nuget package đã có trong project.
 
 *******************
-Server Requirements
+Các bước cài đặt
 *******************
 
-PHP version 5.6 or newer is recommended.
+1. Vào thư mục Database chạy file script sql trong mysql workbench. Đặt tên database là : linhkienchinhthuc
 
-It should work on 5.4.8 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+2. Thay đổi passwork trong appsetting.json cho đúng với database của workbench. Nếu xài phpmysql thì khỏi cần passwork
+
+
 
 ************
 Installation
