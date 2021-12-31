@@ -200,7 +200,7 @@ namespace demomysql.Controllers
 
                 
             }
-            _notyfService.Success("Đổi mật khẩu không thành công");
+            _notyfService.Error("Đổi mật khẩu không thành công");
             return RedirectToAction("Dashboard", "Accounts");
         }
 

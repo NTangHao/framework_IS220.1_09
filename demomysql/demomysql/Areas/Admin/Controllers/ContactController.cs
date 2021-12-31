@@ -62,7 +62,7 @@ namespace demomysql.Areas.Admin.Controllers
 
                 MailMessage mail = new MailMessage();
 
-                mail.From = new MailAddress("emailnguoigui@gmail.com");
+                mail.From = new MailAddress("tenmailnguoingui@gmail.com");
 
 
                 mail.To.Add(sendMailDto.Mailto);
@@ -80,7 +80,7 @@ namespace demomysql.Areas.Admin.Controllers
 
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
 
-                NetworkCredential networkCredential = new NetworkCredential("emailnguoigui@gmail.com", "matkhaunguoigui");
+                NetworkCredential networkCredential = new NetworkCredential("tenmailnguoingui@gmail.com", "matkhau");
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = networkCredential;
                 smtpClient.Port = 587;

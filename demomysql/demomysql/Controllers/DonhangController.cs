@@ -42,5 +42,30 @@ namespace demomysql.Controllers
             var chitietdonhang = _context.Ctdhs.Include(x => x.MaspNavigation).Where(x => x.Madonhang == id).ToList();
             return  PartialView("Details",chitietdonhang);
         }
+
+        public IActionResult Huydon(int id)
+        {
+            var taikhoanid = HttpContext.Session.Get<Nguoidung>("Sessionkhachhang");
+            var khachhang = _context.Nguoidungs.Find(Convert.ToInt32(taikhoanid.Manguoidung));
+            if (khachhang == null)
+            {
+                return NotFound();
+            }
+
+            var donhang = _context.Donhangs
+                .Include(x => x.IdtransactionNavigation)
+                .Include(x => x.MavoucherNavigation)
+                .SingleOrDefault(s => s.Madonhang == id && taikhoanid.Manguoidung == s.Manguoidung);
+
+            if (donhang == null)
+            {
+                return NotFound();
+            }
+            donhang.Idtransaction = 5;
+            _context.Update(donhang);
+            _context.SaveChanges();
+            _notyfService.Success("Hủy đơn hàng thành công");
+            return RedirectToAction("Dashboard", "Accounts");
+        }
     }
 }

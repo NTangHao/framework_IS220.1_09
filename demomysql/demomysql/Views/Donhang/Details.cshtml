@@ -9,6 +9,12 @@
 @model List<Ctdh>
 <h3>Thông tin đơn hàng: #@donhang.Madonhang</h3>
 <div class="mt-5 col-md-12"><strong>Ngày đặt hàng:</strong>  @donhang.Ngaydat</div>
+
+<address class="p-l-10 m-t-10">
+    <span class="font-weight-semibold text-dark"><strong>Họ tên:</strong> @donhang.Hoten</span><br>
+    <span><strong>Số điện thoại:</strong> @donhang.Sdt </span><br>
+    <span> <strong>Địa chỉ:</strong>  @donhang.Thanhpho, @donhang.Quan, @donhang.Diachi</span>
+</address>
 <div class="mt-5 col-md-12"> <strong>Tình trạng thanh toán:</strong> @donhang.Tinhtrangthanhtoan</div>
 <div class="mt-5 col-md-12 mb-5"> <strong>Tổng tiền:</strong> @donhang.Tongdon.Value.ToString("#,##0") VNĐ</div>
 

@@ -54,7 +54,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-9">
-                    <div class="col-lg-9">
+                    <div class="col-lg-12">
                         <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
                             <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel" aria-labelledby="account-dashboard-tab">
                                 <div class="myaccount-dashboard">
@@ -113,3 +113,15 @@
             </div>
         </div>
 </main>
+
+<script>
+    $(function () {
+        $('#account-logout-tab').click(function () {
+            if (confirm('Bạn có muốn đăng xuất')) {
+                return true;
+            }
+
+            return false;
+        });
+    });
+</script>

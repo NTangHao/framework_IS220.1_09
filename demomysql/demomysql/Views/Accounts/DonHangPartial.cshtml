@@ -16,15 +16,22 @@
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td><a class="account-order-id" href="javascript:void(0)">#@item.Madonhang</a></td>
-                    <td>@item.Ngaydat</td>
-                    <td>@item.IdtransactionNavigation.Tinhtrang</td>
-                    <td style="width:20%">@Extension.ToVnd((double)item.Tongdon)</td>
-                    <td>
-                        <a data-id="@item.Madonhang" href="javascript:void(0)" class="xemdonhang btn btn-secondary btn-primary-hover"><span>Xem</span></a>
-                    </td>
-                </tr>
+        <tr>
+            <td><a class="account-order-id" href="javascript:void(0)">#@item.Madonhang</a></td>
+            <td>@item.Ngaydat</td>
+            <td>@item.IdtransactionNavigation.Tinhtrang</td>
+            <td style="width:20%">@Extension.ToVnd((double)item.Tongdon)</td>
+            <td>
+                <a data-id="@item.Madonhang" href="javascript:void(0)" class="xemdonhang btn btn-secondary btn-primary-hover"><span>Xem</span></a>
+            </td>
+            @if ((item.Idtransaction == 1 || item.Idtransaction == 2) && item.Tinhtrangthanhtoan== "Chưa thanh toán")
+            {
+                <td style="width:15%">
+                    <a asp-controller="Donhang" asp-action="Huydon" asp-route-id="@item.Madonhang"  class="huydon btn btn-secondary btn-danger"><span>Hủy đơn</span></a>
+                </td>
+            }
+
+        </tr>
             }
         </tbody>
     </table>
@@ -73,5 +80,14 @@ else
 
     $('.ajax-add-to-cart').click(function (e) {
         e.preventDefault();
+    });
+
+
+    $('.huydon').click(function () {
+        if (confirm('Bạn có muốn hủy đơn?')) {
+            return true;
+        }
+
+        return false;
     });
 </script>
