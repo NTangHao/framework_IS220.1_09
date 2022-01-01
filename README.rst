@@ -50,11 +50,14 @@ Các bước cài đặt
 
 1. Vào thư mục Database chạy file script sql trong mysql workbench. Đặt tên database là : linhkienchinhthuc
 
-2. Thay đổi passwork trong appsetting.json cho đúng với database của workbench. Nếu xài phpmysql thì khỏi cần passwork
+2. Mở project -> Thay đổi passwork trong appsetting.json cho đúng với database của workbench.
 
-3. Password người khách hàng có sẵn: tk: khoale@gmail.com, mật khẩu: benten2801
+3. Vào thư mục model -> linhkienchinhthucContext.cs. Chỉnh sửa thông tin trong optionsBuilder (pwd->password) 
+ví dụ: optionsBuilder.UseMySQL("server=127.0.0.1;uid=root;pwd=[password của workbench];database=linhkienchinhthuc");
 
-4. Để vô trang admin. gõ /Admin trên trang chính localhost. tk: haohan2801, mật khẩu: 123
+4. Password người khách hàng có sẵn: tk: khoale@gmail.com, mật khẩu: benten2801
+
+5. Để vô trang admin. gõ /Admin trên trang chính localhost. tk: haohan2801, mật khẩu: 123
 
 
 
