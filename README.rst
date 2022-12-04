@@ -60,7 +60,7 @@ Các bước cài đặt
 
 5. Để vô trang admin. gõ /Admin trên trang chính localhost. tk: haohan2801, mật khẩu: 123
 
-
+# Link Demo: https://www.youtube.com/channel/UCkSupjQaIGk-74ya6Jn9BOg
 
 
 
